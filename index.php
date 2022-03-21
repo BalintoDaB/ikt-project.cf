@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="container">
+        <h1 class="text-center">FreshScents</h1>
         <div id="carouselPictures" class="carousel slide" data-bs-ride="carousel" >
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="0" class="active"></button>
@@ -18,13 +19,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="img/0.png" alt="Víztükör" class="d-block w-100">
+                        <img src="img/0.png" alt="Víztükör" class="d-block mx-auto w-50">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/1.png" alt="Nádas" class="d-block w-100">
+                        <img src="img/1.png" alt="Nádas" class="d-block mx-auto w-50">
                     </div>
                     <div class="carousel-item">
-                        <img src="img/2.png" alt="Tavirózsák" class="d-block w-100">
+                        <img src="img/2.png" alt="Tavirózsák" class="d-block mx-auto w-50">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselPictures" data-bs-slide="prev">

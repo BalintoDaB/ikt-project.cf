@@ -21,3 +21,6 @@ p{
     border-top-left-radius: 60px;
     border-bottom-right-radius: 60px;
 }
+#carouselPictures{
+    height: 100vh;
+}
