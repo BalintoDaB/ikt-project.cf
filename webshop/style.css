@@ -1,0 +1,15 @@
+:root{
+    --piros: #d72631;
+    --vilagospiros: #ff5b65;
+    --vilagoskek: #a2d5c6;
+    --sotetkek: #077b8a;
+    --lila: #5c3c92;
+}
+.webshopgomb{
+    background-color: var(--sotetkek);
+    border: var(--sotetkek);
+    color: white;
+}
+.webshopgomb:hover, .webshop:active{
+    background-color: var(--vilagoskek);
+}
