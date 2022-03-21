@@ -10,30 +10,33 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center">FreshScents</h1>
-        <div id="carouselPictures" class="carousel slide" data-bs-ride="carousel" >
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="1" ></button>
-                    <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="2" ></button>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div id="carouselPictures" class="carousel slide" data-bs-ride="carousel" >
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="1" ></button>
+                        <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="2" ></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/0.png" alt="Víztükör" class="d-block mx-auto w-25">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/1.png" alt="Nádas" class="d-block mx-auto w-25">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/2.png" alt="Tavirózsák" class="d-block mx-auto w-25">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPictures" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselPictures" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/0.png" alt="Víztükör" class="d-block mx-auto w-50">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/1.png" alt="Nádas" class="d-block mx-auto w-50">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/2.png" alt="Tavirózsák" class="d-block mx-auto w-50">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselPictures" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselPictures" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
+            </div>
         </div>
     </div>
 
