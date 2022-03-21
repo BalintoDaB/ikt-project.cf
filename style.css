@@ -24,3 +24,6 @@ p{
 #carouselPictures{
     height: 100vh;
 }
+header{
+    background-color: transparent;
+}
