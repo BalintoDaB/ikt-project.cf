@@ -12,22 +12,22 @@
 <header>
     <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Brand</a>
+            <img src="" class="rounded">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="main_nav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link " href="#"> Menu item </a></li>
-                    <li class="nav-item"><a class="nav-link " href="#"> Menu item </a></li>
-                    <li class="nav-item"><a class="nav-link " href="#"> Menu item </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
+                    <li class="nav-item"><a class="nav-link" href="webshop/webshop.php">Webshop</a></li>
                 </ul>
             </div> <!-- navbar-collapse.// -->
         </div> <!-- container-fluid.// -->
     </nav>
 </header>
-    <div class="container">
-        <div class="row">
+    <div class="container" style="height: 10000px;">
+        <div class="row justify-content-center mt-4">
             <div class="col-12 col-md-6">
                 <div id="carouselPictures" class="carousel slide" data-bs-ride="carousel" >
                     <div class="carousel-indicators">
@@ -37,13 +37,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="img/0.png" alt="Víztükör" class="d-block mx-auto w-25">
+                            <img src="img/0.png" alt="Víztükör" class="d-block w-25 mx-auto">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/1.png" alt="Nádas" class="d-block mx-auto w-25">
+                            <img src="img/1.png" alt="Nádas" class="d-block w-25 mx-auto">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/2.png" alt="Tavirózsák" class="d-block mx-auto w-25">
+                            <img src="img/2.png" alt="Tavirózsák" class="d-block w-25 mx-auto">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselPictures" data-bs-slide="prev">
