@@ -1,0 +1,23 @@
+body{
+    background-color: red;
+}
+
+h1{
+    background-color: #ddd;
+    color: #333;
+    width: 15rem;
+    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+    position: absolute;
+    top: calc(100% - 3rem);
+}
+
+p{
+    text-align: justify;
+    text-indent: 2rem;
+}
+
+.card{
+    border-top-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+}
