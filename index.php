@@ -35,15 +35,15 @@
                         <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="1" ></button>
                         <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="2" ></button>
                     </div>
-                    <div class="carousel-inner">
+                    <div class="carousel-inner" onmouseover='nagyobbit()'>
                         <div class="carousel-item active">
-                            <img src="img/0.png" alt="Víztükör" class="rounded d-block h-80 mx-auto">
+                            <img src="img/0.png" alt="Víztükör" class="rounded d-block mx-auto img-fluid">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/1.png" alt="Nádas" class="rounded d-block h-80 mx-auto">
+                            <img src="img/1.png" alt="Nádas" class="rounded d-block mx-auto img-fluid">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/2.png" alt="Tavirózsák" class="rounded d-block h-80 mx-auto">
+                            <img src="img/2.png" alt="Tavirózsák" class="rounded d-block mx-auto img-fluid">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselPictures" data-bs-slide="prev">
