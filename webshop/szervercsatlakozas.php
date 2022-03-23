@@ -1,7 +1,7 @@
  <?php
-    $szervernev = "sql201.epizy.com";
-    $felhasznalonev = "epiz_31340715";
-    $jelszo = "t78L9l2saq";
+    $szervernev = "sql201.byetcluster.com";
+    $felhasznalonev = "epiz_31348482";
+    $jelszo = "ITrcq8cg3L3";
     $adatbazisnev = "epiz_31340715_webshop";
 
     // $szervernev = "localhost";

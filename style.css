@@ -11,9 +11,10 @@ p{
     border-top-left-radius: 60px;
     border-bottom-right-radius: 60px;
 }
-/* #carouselPictures{
-    height: 100vh;
-} */
+#carouselPictures{
+    height: 85vh;
+}
 nav{
     background-color: rgba(54, 69, 79, .75);
+    position: absolute;
 }

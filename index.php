@@ -29,22 +29,22 @@
 </header>
     <div class="container" style="height: 10000px;">
         <div class="row justify-content-center mt-4">
-            <div class="col-12 col-md-6">
-                <div id="carouselPictures" class="carousel slide" data-bs-ride="carousel" >
+            <div class="col-12 col-md-12">
+                <div id="carouselPictures" class="carousel slide shadow-lg rounded py-auto" data-bs-ride="carousel" >
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="0" class="active"></button>
                         <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="1" ></button>
                         <button type="button" data-bs-target="#carouselPictures" data-bs-slide-to="2" ></button>
                     </div>
-                    <div class="carousel-inner">
+                    <div class="carousel-inner" onmouseover='nagyobbit()'>
                         <div class="carousel-item active">
-                            <img src="img/0.png" alt="Víztükör" class="d-block w-25 mx-auto">
+                            <img src="img/0.png" alt="Víztükör" class="rounded d-block mx-auto img-fluid">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/1.png" alt="Nádas" class="d-block w-25 mx-auto">
+                            <img src="img/1.png" alt="Nádas" class="rounded d-block mx-auto img-fluid">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/2.png" alt="Tavirózsák" class="d-block w-25 mx-auto">
+                            <img src="img/2.png" alt="Tavirózsák" class="rounded d-block mx-auto img-fluid">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselPictures" data-bs-slide="prev">
@@ -58,7 +58,8 @@
         </div>
     </div>
 
-    <script src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 </body>
 </html>
