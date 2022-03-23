@@ -13,3 +13,12 @@
 .webshopgomb:hover, .webshop:active{
     background-color: var(--vilagoskek);
 }
+.webshopreset{
+    background-color: var(--piros);
+    border: var(--vilagospiros);
+    color: white;
+}
+.webshopreset:hover, .webshop:active{
+    background-color: rgb(90, 12, 12);
+    color: white;
+}

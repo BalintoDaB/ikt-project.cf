@@ -8,7 +8,7 @@
     // $felhasznalonev = "root";
     // $jelszo = "";
     // $adatbazisnev = "webshop";
-    // $csatlakozas = new mysqli($szervernev, $felhasznalonev, $jelszo, $adatbazisnev);
+    $csatlakozas = new mysqli($szervernev, $felhasznalonev, $jelszo, $adatbazisnev);
 
     if ($csatlakozas->connect_error) {
         die("Nem sikerült csatlakozni: " . $csatlakozas->connect_error);

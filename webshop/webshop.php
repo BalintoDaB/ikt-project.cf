@@ -39,19 +39,80 @@
         </table>
         <hr class="my-4">
         <div class="text-center">
-            <h1>
+            <h1 class="mb-4">
                 Szállítási és fizetési adatok
             </h1>
             <form method="post">
-                <div class="row">
-                    <div class="col-12 col-md-6">
+                <div class="row mb-4">
+                    <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
+                            <input autocomplete="email" name="email" type="email" class="form-control" id="emailin" placeholder="minta@gmail.com">
+                            <label for="emailin">Email Cím</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-floating mb-3">
+                            <input autocomplete="name" name="name" type="text" class="form-control" id="nevin" placeholder="Molnár Bálint">
+                            <label for="nevin">Név</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-floating mb-3">
+                            <input autocomplete="tel" name="telszam" type="text" class="form-control" id="telin" placeholder="+36201234567">
+                            <label for="telin">Telefonszám</label>
                         </div>
                     </div>
                 </div>
+                <div class="row my-4">
+                    <div class="col-12 col-md-4">
+                        <div class="form-floating mb-3">
+                            <input autocomplete="country-name" name="orszag" type="text" class="form-control" id="orszagin" placeholder="Magyarország">
+                            <label for="orszagin">Ország</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="megye" id="megyein" placeholder="Győr-Moson-Sopron megye">
+                            <label for="megyein">Megye/Állam</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-floating mb-3">
+                            <input autocomplete="postal-code" name="iranyitoszam" type="text" class="form-control" id="iranyin" placeholder="9200">
+                            <label for="iranyin">Irányítószám</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-md-12">
+                        <div class="form-floating mb-3">
+                            <input autocomplete="address-line1" name="cim" type="text" class="form-control" id="cimin" placeholder="Mosonmagyaróvár, Fő utca 1.">
+                            <label for="cimin">Cím</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-floating mb-3">
+                        <textarea name="megjegyzes" class="form-control" id="megjegyzin" placeholder="Megjegyzés"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 p-4">
+                        <input class="btn webshopreset" type="reset" value="Adatok törlése">
+                    </div>
+                    <div class="col-12 col-md-6 p-4">
+                        <input class="btn webshopgomb" name="submit" type="submit" value="Vásárlás">
+                    </div>
+                </div>
             </form>
+            <hr>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <!-- <?php
+                        // include("rendeles.php")
+                    ?> -->
+                </div>
+            </div>
         </div>
     </div>
 </body>
