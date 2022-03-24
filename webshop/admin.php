@@ -82,9 +82,6 @@
                 </td>
             </tr>
         </table>
-        <?php
-            include('torles.php')
-        ?>
     </form>
     <hr>
     <script>

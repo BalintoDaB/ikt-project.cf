@@ -43,6 +43,8 @@
                 Szállítási és fizetési adatok
             </h1>
             <form method="post">
+                <input type="hidden" name="kosar" id="kosarform">
+                <input type="hidden" name="kosardarabszam" id="kosardarabszam">
                 <div class="row mb-4">
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
@@ -83,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-4">
+                <div class="row my-4">
                     <div class="col-12 col-md-12">
                         <div class="form-floating mb-3">
                             <input autocomplete="address-line1" name="cim" type="text" class="form-control" id="cimin" placeholder="Mosonmagyaróvár, Fő utca 1.">
@@ -92,8 +94,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-floating mb-3">
-                        <textarea name="megjegyzes" class="form-control" id="megjegyzin" placeholder="Megjegyzés"></textarea>
+                    <div class="col-12 col-md-12">
+                        <div class="form-floating mb-3">
+                            <input name="megjegyzes" type="text" class="form-control" id="megjegyzen" placeholder="Megjegyzés">
+                            <label for="megjegyzen">Megjegyzés</label>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -107,7 +112,7 @@
             </form>
             <hr>
             <div class="row">
-                <div class="col-12 col-md-12">
+                <div class="col-12 col-md-12" id="rendeles">
                     <!-- <?php
                         // include("rendeles.php")
                     ?> -->
