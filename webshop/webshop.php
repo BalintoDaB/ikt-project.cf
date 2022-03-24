@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,24 +43,23 @@
                 Szállítási és fizetési adatok
             </h1>
             <form method="post">
-                <input type="hidden" name="kosar" id="kosarform">
-                <input type="hidden" name="kosardarabszam" id="kosardarabszam">
+                <input required type="hidden" name="kosar" id="kosarform">
                 <div class="row mb-4">
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
-                            <input autocomplete="email" name="email" type="email" class="form-control" id="emailin" placeholder="minta@gmail.com">
+                            <input required autocomplete="email" name="email" type="email" class="form-control" id="emailin" placeholder="minta@gmail.com">
                             <label for="emailin">Email Cím</label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
-                            <input autocomplete="name" name="name" type="text" class="form-control" id="nevin" placeholder="Molnár Bálint">
+                            <input required autocomplete="name" name="name" type="text" class="form-control" id="nevin" placeholder="Molnár Bálint">
                             <label for="nevin">Név</label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
-                            <input autocomplete="tel" name="telszam" type="text" class="form-control" id="telin" placeholder="+36201234567">
+                            <input required autocomplete="tel" name="telszam" type="text" class="form-control" id="telin" placeholder="+36201234567">
                             <label for="telin">Telefonszám</label>
                         </div>
                     </div>
@@ -68,19 +67,19 @@
                 <div class="row my-4">
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
-                            <input autocomplete="country-name" name="orszag" type="text" class="form-control" id="orszagin" placeholder="Magyarország">
+                            <input required autocomplete="country-name" name="orszag" type="text" class="form-control" id="orszagin" placeholder="Magyarország">
                             <label for="orszagin">Ország</label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="megye" id="megyein" placeholder="Győr-Moson-Sopron megye">
+                            <input required type="text" class="form-control" name="megye" id="megyein" placeholder="Győr-Moson-Sopron megye">
                             <label for="megyein">Megye/Állam</label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
-                            <input autocomplete="postal-code" name="iranyitoszam" type="text" class="form-control" id="iranyin" placeholder="9200">
+                            <input required autocomplete="postal-code" name="iranyitoszam" type="text" class="form-control" id="iranyin" placeholder="9200">
                             <label for="iranyin">Irányítószám</label>
                         </div>
                     </div>
@@ -88,7 +87,7 @@
                 <div class="row my-4">
                     <div class="col-12 col-md-12">
                         <div class="form-floating mb-3">
-                            <input autocomplete="address-line1" name="cim" type="text" class="form-control" id="cimin" placeholder="Mosonmagyaróvár, Fő utca 1.">
+                            <input required autocomplete="address-line1" name="cim" type="text" class="form-control" id="cimin" placeholder="Mosonmagyaróvár, Fő utca 1.">
                             <label for="cimin">Cím</label>
                         </div>
                     </div>
@@ -103,24 +102,31 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 p-4">
-                        <input class="btn webshopreset" type="reset" value="Adatok törlése">
+                        <input required class="btn webshopreset" type="reset" value="Adatok törlése">
                     </div>
                     <div class="col-12 col-md-6 p-4">
-                        <input class="btn webshopgomb" name="submit" type="submit" value="Vásárlás">
+                        <input required class="btn webshopgomb" name="submit" type="submit" value="Vásárlás">
                     </div>
                 </div>
             </form>
             <hr>
             <div class="row">
-                <div class="col-12 col-md-12" id="rendeles">
-                    <!-- <?php
-                        // include("rendeles.php")
-                    ?> -->
+                <div class="col-12 col-md-12 text-center" id="rendeles">
+                    <?php
+                    include('szervercsatlakozas.php');
+                    include('rendeles.php');
+                    ?>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script>
+    if(window.history.replaceState) 
+    {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
 <script src='script.js'></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </html>
