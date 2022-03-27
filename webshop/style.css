@@ -4,14 +4,16 @@
     --vilagoskek: #a2d5c6;
     --sotetkek: #077b8a;
     --lila: #5c3c92;
+    --sotetpiros: rgb(90, 12, 12);
+    --kozeppiros: #9b000a;
 }
 .webshopgomb{
-    background-color: var(--sotetkek);
-    border: var(--sotetkek);
+    background-color: var(--piros);
+    border: var(--piros);
     color: white;
 }
 .webshopgomb:hover, .webshop:active{
-    background-color: var(--vilagoskek);
+    background-color: var(--vilagospiros);
 }
 .webshopreset{
     background-color: var(--piros);
@@ -19,6 +21,36 @@
     color: white;
 }
 .webshopreset:hover, .webshop:active{
-    background-color: rgb(90, 12, 12);
+    background-color: var(--sotetpiros);
     color: white;
+}
+body{
+    background-color: var(--sotetpiros);
+}
+.card{
+    background-color: var(--kozeppiros);
+}
+label{
+    color: black;
+}
+h1, td, p, h5, h2{
+    color: whitesmoke;
+}
+nav{
+    background-color: rgba(54, 69, 79, .75);
+}
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+table tr:first-child th:first-child{
+    border-top-left-radius: 10px;
+}
+table tr:first-child th:last-child{
+    border-top-right-radius: 10px;
+}
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+table tr:last-of-type td{
+    border-bottom: 0px;
 }

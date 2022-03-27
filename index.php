@@ -23,8 +23,8 @@
                     <li class="nav-item"><a class="nav-link" href="webshop/webshop.php">Webshop</a></li>
                     <li class="nav-item"><a class="nav-link" href="webshop/allapot.php">Rendelés állapota</a></li>
                 </ul>
-            </div> <!-- navbar-collapse.// -->
-        </div> <!-- container-fluid.// -->
+            </div>
+        </div>
     </nav>
 </header>
     <div class="container" style="height: 10000px;">
