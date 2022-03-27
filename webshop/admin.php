@@ -84,6 +84,9 @@
         </table>
     </form>
     <hr>
+    <?php
+        include('torles.php')
+    ?>
     <script>
     if(window.history.replaceState) 
     {

@@ -47,13 +47,23 @@ function szamValt(micsoda){
     });
     eddigiKosarban[index] = '';
     eddigiKosarban[index] = micsoda + ' ' + eredeti.slice(0, -1) + 'db';
-    // szam = 1;
-    // for (let i = 0; i <= 10; i++){
-    //     xdlol = eddigiKosarban.indexOf(micsoda + ' ' + szam + 'db');
-    //     szam +=1;
-    //     alert(szam);
-    //     // xdlol = eddigiKosarban[eddigiKosarban.indexOf(micsoda + ' ' + '?' )] = micsoda + ' ' + eredeti + 'db';
-    // }
     $('#kosarform').val('');
     $('#kosarform').val(eddigiKosarban);
 }
+function ugorj(hova){
+    window.location.href = hova;
+}
+document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 50) {
+        document.getElementById("navbar_top").classList.add("fixed-top");
+        // add padding top to show content behind navbar
+        navbar_height = document.querySelector(".navbar").offsetHeight;
+        document.body.style.paddingTop = navbar_height + "px";
+      } else {
+        document.getElementById("navbar_top").classList.remove("fixed-top");
+        // remove padding top from body
+        document.body.style.paddingTop = "0";
+      }
+    });
+});

@@ -9,6 +9,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <img src="" class="rounded">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="main_nav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
+                        <li class="nav-item"><a class="nav-link" href="allapot.php">Rendelés állapota</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
     <div class="container">    
         <div class="row">
         <?php
@@ -17,7 +35,7 @@
         ?>
         </div>
         <hr>
-        <table id='kosartable' class="table table-striped table-hover table-bordered text-center">
+        <table id='kosartable' class="table table-striped table-hover shadow-lg table-dark text-center">
             <thead>
                 <tr>
                     <th>
@@ -102,7 +120,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 p-4">
-                        <input required class="btn webshopreset" type="reset" value="Adatok törlése">
+                        <input required class="btn webshopgomb" type="reset" value="Adatok törlése">
                     </div>
                     <div class="col-12 col-md-6 p-4">
                         <input required class="btn webshopgomb" name="submit" type="submit" value="Vásárlás">
@@ -128,5 +146,6 @@
     }
 </script>
 <script src='script.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </html>

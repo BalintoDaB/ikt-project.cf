@@ -10,11 +10,11 @@
         $megjegyz = $_POST['megjegyzes'];
         $rendeles = $_POST['kosar'];
         $kod = rand(0, 9999999);
-        $sql = "INSERT INTO rendelesek (email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod) VALUES ('$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyz','$rendeles','$kod')";
+        $sql = "INSERT INTO rendelesek (email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, allapot) VALUES ('$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyz','$rendeles','$kod','Rendelés leadva')";
         if(mysqli_query($csatlakozas, $sql)){
             echo "<script>alert('Sikeres megrendelés!');</script>";
             echo "<h1>Sikeres Megrendelés!</h1>";
             echo "<h2>A következő a megrendelési kódod: $kod</h2></br>";
-            echo "<input type='button' class='btn webshopgomb' value='Tovább a rendelés állapotának megtekintéséhez'>";
+            echo "<input type='button' class='my-4 btn webshopgomb' onclick='ugorj(" . '"' . "allapot.php" . '"' . ")' value='Tovább a rendelés állapotának megtekintéséhez'>";
         }
     }
