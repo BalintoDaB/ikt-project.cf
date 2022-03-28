@@ -1,8 +1,19 @@
+var ActivPic;
+var magassag;
+
+
 var intervalId = window.setInterval(function () {
   GetSlide();
 }, 100);
 
 document.addEventListener("DOMContentLoaded", function () {
+  var kepek = document.getElementsByClassName("carousel-item")
+  var szam = 0;
+  while(szam != 5){
+    var src = kepek[szam].getElementsByClassName("cr-kep");
+    src[0].style.height = "80%";
+    szam++;
+  }
   window.addEventListener("scroll", function () {
     if (window.scrollY > 50) {
       document.getElementById("navbar_top").classList.add("fixed-top");
@@ -20,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function GetSlide() {
   var aktiv = document.getElementsByClassName("active");
   var src = aktiv[1].getElementsByClassName("cr-kep");
+  ActivPic = src[0];
   var hatter = document.body.style.backgroundColor;
   var color = ["#d72631", "#ff5b65", "#a2d5c6", "#077b8a", "#5c3c92"];
   if(src[0].src.includes("0.png")){
@@ -40,6 +52,24 @@ function GetSlide() {
   }
 }
 function nagyobbit() {
-  
+  anime({
+    targets: ActivPic,
+    keyframes: [
+      { translateX: -250 },
+    ],
+    duration: 500,
+    easing: "spring(1, 80, 20, 10)",
+  });
 }
+function sima() {
+  anime({
+    targets: ActivPic,
+    keyframes: [
+      { translateX: 0},
+    ],
+    duration: 500,
+    easing: "spring(1, 80, 20, 10)",
+  });
+}
+
 
