@@ -17,6 +17,9 @@
                     <td>
                         Ár
                     </td>
+                    <td>
+                        Kép
+                    </td>
                 </tr>
             </thead>
             <tbody>
@@ -27,9 +30,12 @@
                     <td>
                         <input type="number" name="ar" id="ar">
                     </td>
+                    <td>
+                        <input type="text" name="kep" id="kep">
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         <input type="submit" value="Hozzáadás" name="leadas" id="leadas">
                     </td>
                 </tr>

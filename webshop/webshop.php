@@ -66,19 +66,19 @@
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
                             <input required autocomplete="email" name="email" type="email" class="form-control" id="emailin" placeholder="minta@gmail.com">
-                            <label for="emailin">Email Cím</label>
+                            <label for="emailin">Email Cím<span class="text-danger">*</span></label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
                             <input required autocomplete="name" name="name" type="text" class="form-control" id="nevin" placeholder="Molnár Bálint">
-                            <label for="nevin">Név</label>
+                            <label for="nevin">Név<span class="text-danger">*</span></label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
                             <input required autocomplete="tel" name="telszam" type="text" class="form-control" id="telin" placeholder="+36201234567">
-                            <label for="telin">Telefonszám</label>
+                            <label for="telin">Telefonszám<span class="text-danger">*</span></label>
                         </div>
                     </div>
                 </div>
@@ -86,19 +86,19 @@
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
                             <input required autocomplete="country-name" name="orszag" type="text" class="form-control" id="orszagin" placeholder="Magyarország">
-                            <label for="orszagin">Ország</label>
+                            <label for="orszagin">Ország<span class="text-danger">*</span></label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
                             <input required type="text" class="form-control" name="megye" id="megyein" placeholder="Győr-Moson-Sopron megye">
-                            <label for="megyein">Megye/Állam</label>
+                            <label for="megyein">Megye/Állam<span class="text-danger">*</span></label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
                             <input required autocomplete="postal-code" name="iranyitoszam" type="text" class="form-control" id="iranyin" placeholder="9200">
-                            <label for="iranyin">Irányítószám</label>
+                            <label for="iranyin">Irányítószám<span class="text-danger">*</span></label>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                     <div class="col-12 col-md-12">
                         <div class="form-floating mb-3">
                             <input required autocomplete="address-line1" name="cim" type="text" class="form-control" id="cimin" placeholder="Mosonmagyaróvár, Fő utca 1.">
-                            <label for="cimin">Cím</label>
+                            <label for="cimin">Cím<span class="text-danger">*</span></label>
                         </div>
                     </div>
                 </div>
