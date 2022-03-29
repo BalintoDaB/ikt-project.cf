@@ -5,11 +5,12 @@
         while($sor = $mennyi->fetch_assoc()) {
             $termeknev = $sor['neve'];
             $termekar = $sor['ara'];
+            $termekkep = $sor['kepnev'];
             $benev = '"' . $termeknev . '"';
             echo "
               <div class='col-12 col-md-4 p-4 mx-auto'>              
                 <div class='card text-center shadow-lg text-center'>
-                <img class='card-img-top w-50 mx-auto' src='../img/0.png'>
+                <img class='card-img-top w-50 mx-auto' src='../img/$termekkep'>
                   <div class='card-body'>
                     <h5 class='card-title'>$termeknev</h5>
                     <p class='card-text'>$termekar Ft</p>

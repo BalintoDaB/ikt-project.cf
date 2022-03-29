@@ -38,7 +38,7 @@
                         <td>$telszam</td>
                         <td>$email</td>
                         <td>$rendeltek</td>
-                        <td>$allapot</td>
+                        <td class='fw-bold'>$allapot</td>
                         </tr>
                         </tbody>
                         </table>";
