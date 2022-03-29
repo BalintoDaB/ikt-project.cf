@@ -1,17 +1,24 @@
 var ActivPic;
+var ActivBuy;
 var magassag;
-
 
 var intervalId = window.setInterval(function () {
   GetSlide();
 }, 100);
 
 document.addEventListener("DOMContentLoaded", function () {
-  var kepek = document.getElementsByClassName("carousel-item")
+  var kepek = document.getElementsByClassName("carousel-item");
   var szam = 0;
-  while(szam != 5){
+  while (szam != 5) {
     var src = kepek[szam].getElementsByClassName("cr-kep");
     src[0].style.height = "80%";
+    if (window.screen.width < 1000) {
+      src[0].style.height = "60%";
+    } else if (window.screen.width < 770) {
+      src[0].style.height = "40%";
+    } else if (window.screen.width < 400) {
+      src[0].style.height = "10%";
+    }
     szam++;
   }
   window.addEventListener("scroll", function () {
@@ -31,45 +38,58 @@ document.addEventListener("DOMContentLoaded", function () {
 function GetSlide() {
   var aktiv = document.getElementsByClassName("active");
   var src = aktiv[1].getElementsByClassName("cr-kep");
+  var buy = aktiv[1].getElementsByClassName("cr-buy");
   ActivPic = src[0];
+  ActivBuy = buy[0];
+  console.log(ActivBuy);
   var hatter = document.body.style.backgroundColor;
   var color = ["#d72631", "#ff5b65", "#a2d5c6", "#077b8a", "#5c3c92"];
-  if(src[0].src.includes("0.png")){
+  var color2 = ["#c12f38", "#d25960", "#85aea2", "#085f6b", "#472e6f"];
+  if (src[0].src.includes("0.png")) {
     document.getElementById("sec1").style.backgroundColor = color[0];
+    ActivBuy.style.backgroundColor = color2[0];
     console.log("0");
-  }else if(src[0].src.includes("1.png")){
+  } else if (src[0].src.includes("1.png")) {
     document.getElementById("sec1").style.backgroundColor = color[1];
+    ActivBuy.style.backgroundColor = color2[1];
     console.log("1");
-  }else if(src[0].src.includes("2.png")){
+  } else if (src[0].src.includes("2.png")) {
     document.getElementById("sec1").style.backgroundColor = color[2];
+    ActivBuy.style.backgroundColor = color2[2];
     console.log("2");
-  }else if(src[0].src.includes("3.png")){
+  } else if (src[0].src.includes("3.png")) {
     document.getElementById("sec1").style.backgroundColor = color[3];
+    ActivBuy.style.backgroundColor = color2[3];
     console.log("3");
-  }else if(src[0].src.includes("4.png")){
+  } else if (src[0].src.includes("4.png")) {
     document.getElementById("sec1").style.backgroundColor = color[4];
+    ActivBuy.style.backgroundColor = color2[4];
     console.log("4");
   }
 }
 function nagyobbit() {
+  var move = -250;
+  if (window.screen.width < 1000) {
+    move = -150;
+  } else if (window.screen.width < 770) {
+    move = -50;
+  } else if (window.screen.width < 400) {
+    move = 0;
+  }
   anime({
     targets: ActivPic,
-    keyframes: [
-      { translateX: -250 },
-    ],
+    keyframes: [{ translateX: move }],
     duration: 500,
     easing: "spring(1, 80, 20, 10)",
   });
+  ActivBuy.style.opacity = "1";
 }
 function sima() {
   anime({
     targets: ActivPic,
-    keyframes: [
-      { translateX: 0},
-    ],
+    keyframes: [{ translateX: 0 }],
     duration: 500,
     easing: "spring(1, 80, 20, 10)",
   });
+  ActivBuy.style.opacity = "0";
 }
-
-
