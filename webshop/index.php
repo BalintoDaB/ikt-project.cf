@@ -25,9 +25,9 @@ try {
     $mail->Port = CONTACTFORM_SMTP_PORT;
 
     // Recipients
-    $mail->setFrom('yourmail@gmail.com', 'yourcompanyname');
+    $mail->setFrom('cases.donotreply@gmail.com', 'Cases');
     $mail->addAddress($email);
-    $mail->addReplyTo('yourmail@gmail.com');
+    // $mail->addReplyTo('yourmail@gmail.com');
 
     // Content
      $mail->isHTML(true); //false if you don't use html.
@@ -35,7 +35,10 @@ try {
     
       
       //email body
-      $mail->Body = '<h1> your, mail body!.. </h1>';
+      $mail->Body = '<div style="text-align: center;"><h1>Sikeres Megrendelés '. $nev . ' Számára!</h1<br>
+                      <h2>A következő a rendelési azonosítója:' . $kod . '</h2><br>
+                      <h3>A rendelésének állapotának megtekintéséhez kérjük látogasson el a <a href="http://ikt-project.rf.gd/webshop/allapot.php?kod=' . $kod . '">weboldalunkra!</a></h3>
+                      <h4>Köszönettel: Custom Cases</h4></div>';
   
 
 
