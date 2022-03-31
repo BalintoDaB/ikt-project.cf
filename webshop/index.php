@@ -13,7 +13,7 @@ try {
 
 
   //check query is execute successfully or not
-    $email = 'whereyouwanttosendmail@gmail.com';
+    // $email = 'whereyouwanttosendmail@gmail.com';
     //Server settings
     $mail->SMTPDebug = CONTACTFORM_PHPMAILER_DEBUG_LEVEL;
     $mail->isSMTP();
@@ -25,7 +25,7 @@ try {
     $mail->Port = CONTACTFORM_SMTP_PORT;
 
     // Recipients
-     $mail->setFrom('yourmail@gmail.com', 'yourcompanyname');
+    $mail->setFrom('yourmail@gmail.com', 'yourcompanyname');
     $mail->addAddress($email);
     $mail->addReplyTo('yourmail@gmail.com');
 
