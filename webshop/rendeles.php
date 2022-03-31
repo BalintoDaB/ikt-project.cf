@@ -15,6 +15,6 @@
             echo "<script>alert('Sikeres megrendelés!');</script>";
             echo "<h1>Sikeres Megrendelés!</h1>";
             echo "<h2>A következő a megrendelési kódod: $kod</h2></br>";
-            echo "<input type='button' class='my-4 btn webshopgomb' onclick='ugorj(" . '"' . "allapot.php" . '"' . ")' value='Tovább a rendelés állapotának megtekintéséhez'>";
+            echo "<input type='button' class='my-4 btn webshopgomb' onclick='ugorj(" . '"' . "allapot.php?kod=$kod" . '"' . ")' value='Tovább a rendelés állapotának megtekintéséhez'>";
         }
     }

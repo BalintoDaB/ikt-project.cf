@@ -16,6 +16,10 @@ function kosarbatetel(nev, ar){
             szamos = parseInt($('#' + micsoda + 'szam').val()) + 1;
             $('#' + micsoda + 'szam').val(szamos);
             var eredeti = $('#' + micsoda + 'szam').val();
+            artd = $('#' + micsoda + 'artd');
+            var eredetiar = parseInt(ar);
+            var ujar = eredetiar*eredeti;
+            artd.html(ujar.toString() + ' Ft');
             eredeti+=1;
             var index = eddigiKosarban.findIndex(element => {
                 if (element.includes(micsoda)) {
@@ -28,7 +32,7 @@ function kosarbatetel(nev, ar){
     }
     else{
         var beilleszt = "'#" + cutoltNev + "'";
-        $('#kosartable tbody').append('<tr class="align-middle" id="'+ cutoltNev + '"><td>' + nev + '</td><td><input type="number" id="' + cutoltNev + 'szam" style="width:50px; text-align:center" oninput="szamValt(' + "'" + cutoltNev + "'" + ')" max="10" min="1" value="1"></td><td>' + ar +' Ft</td><td><input type="button" class="btn-danger btn" value="Törlés" onclick="torles(' + beilleszt +')"></td></tr>');
+        $('#kosartable tbody').append('<tr class="align-middle" id="'+ cutoltNev + '"><td>' + nev + '</td><td><input type="number" id="' + cutoltNev + 'szam" style="width:50px; text-align:center" oninput="szamValt(' + "'" + cutoltNev + "','" + ar + "'" + ')" max="10" min="1" value="1"></td><td id="' +  cutoltNev + 'artd">' + ar +' Ft</td><td><input type="button" class="btn-danger btn" value="Törlés" onclick="torles(' + beilleszt +')"></td></tr>');
         eddigiKosarban[szamlalo] = cutoltNev;
         szamlalo += 1;
     }
@@ -37,8 +41,12 @@ function kosarbatetel(nev, ar){
 function torles(nev){
     $(nev).remove();
 }
-function szamValt(micsoda){
+function szamValt(micsoda, ar){
     var eredeti = $('#' + micsoda + 'szam').val();
+    artd = $('#' + micsoda + 'artd');
+    var eredetiar = parseInt(ar);
+    var ujar = eredetiar*eredeti;
+    artd.html(ujar.toString() + ' Ft');
     eredeti+=1;
     var index = eddigiKosarban.findIndex(element => {
         if (element.includes(micsoda)) {

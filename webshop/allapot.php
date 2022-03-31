@@ -32,10 +32,22 @@
         <form method="post">
             <div class="row">
                 <div class="col-12 col-md-12">
-                    <div class="form-floating mb-3">
-                        <input required name="kod" class="form-control" id="kodin" placeholder="37528">
-                        <label for="kodin">Megrendeléskor kapott kód</label>
-                    </div>
+                    <?php
+                        if(isset($_GET['kod'])){
+                            $kod = $_GET['kod'];
+                            echo '
+                            <div class="form-floating mb-3">
+                            <input required name="kod" class="form-control" id="kodin" placeholder="37528" value="' . $kod . '">
+                            <label for="kodin">Megrendeléskor kapott kód</label>
+                            </div>';
+                        }
+                        else{
+                            echo '                    <div class="form-floating mb-3">
+                            <input required name="kod" class="form-control" id="kodin" placeholder="37528">
+                            <label for="kodin">Megrendeléskor kapott kód</label>
+                        </div>';
+                        }
+                    ?>
                 </div>
             </div>
             <div class="row justify-content-center mt-4">                
