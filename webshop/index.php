@@ -30,24 +30,21 @@ try {
     // $mail->addReplyTo('yourmail@gmail.com');
 
     // Content
-     $mail->isHTML(true); //false if you don't use html.
-    $mail->Subject = 'Megrendeles Sikeres';
+    $mail->isHTML(true); //false if you don't use html.
+    $mail->Subject = $emailtargy;
     
       
       //email body
-      $mail->Body = '<div style="text-align: center;"><h1>Sikeres Megrendelés '. $nev . ' Számára!</h1<br>
-                      <h2>A következő a rendelési azonosítója:' . $kod . '</h2><br>
-                      <h3>A rendelésének állapotának megtekintéséhez kérjük látogasson el a <a href="http://ikt-project.rf.gd/webshop/allapot.php?kod=' . $kod . '">weboldalunkra!</a></h3>
-                      <h4>Köszönettel: Custom Cases</h4></div>';
+      $mail->Body = $emailtorzs;
   
 
 
     if($mail->send()) {
         //mail not send
-        echo "mail send";
+        // echo "mail send";
     }
     else {
-        echo "mail not send";
+        // echo "mail not send";
     }
 
 

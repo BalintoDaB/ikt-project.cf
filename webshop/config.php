@@ -12,7 +12,7 @@ define('CONTACTFORM_TO_NAME', 'Cases');
 // The details of your SMTP service, e.g. Gmail.
 define('CONTACTFORM_SMTP_HOSTNAME', 'smtp.gmail.com'); //change it if you using other than gmail
 define('CONTACTFORM_SMTP_USERNAME', 'cases.donotreply@gmail.com');
-define('CONTACTFORM_SMTP_PASSWORD', 'ikt2022-project');
+define('CONTACTFORM_SMTP_PASSWORD', 'qlzndikuyugchjco');
 
 
 /**

@@ -111,10 +111,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-12">
-                        <div class="form-floating mb-3">
+                    <div class="col-12 col-md-8">
+                        <div class="form-floating mb-3 w-100">
                             <input name="megjegyzes" type="text" class="form-control" id="megjegyzen" placeholder="Megjegyzés">
                             <label for="megjegyzen">Megjegyzés</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex align-items-center">
+                        <div class="form-check mx-auto">
+                            <input class="form-check-input" type="checkbox" name="emailkergomb" id="emailkergomb">
+                            <label class="form-check-label" for="emailkergomb" style="color:white">Szeretnék e-mailt kapni ha változik a rendelésem állapota</label>
                         </div>
                     </div>
                 </div>

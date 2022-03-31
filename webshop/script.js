@@ -43,13 +43,13 @@ function torles(nev){
 }
 function szamValt(micsoda, ar){
     var eredeti = $('#' + micsoda + 'szam').val();
-    if(eredeti < 1){
+    if(eredeti < 0){
         alert('Negatív számot nem lehet rendelni!')
         $('#' + micsoda + 'szam').val(1);
     }
-    else if(eredeti > 10){
-        alert('10 db-ot rendelhetsz maximum egy termékből!');
-        $('#' + micsoda + 'szam').val(10);
+    else if(eredeti > 25){
+        alert('25 db-ot rendelhet maximum egy termékből!');
+        $('#' + micsoda + 'szam').val(25);
     }
     else{
         artd = $('#' + micsoda + 'artd');
