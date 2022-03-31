@@ -43,20 +43,30 @@ function torles(nev){
 }
 function szamValt(micsoda, ar){
     var eredeti = $('#' + micsoda + 'szam').val();
-    artd = $('#' + micsoda + 'artd');
-    var eredetiar = parseInt(ar);
-    var ujar = eredetiar*eredeti;
-    artd.html(ujar.toString() + ' Ft');
-    eredeti+=1;
-    var index = eddigiKosarban.findIndex(element => {
-        if (element.includes(micsoda)) {
-          return true;
-        }
-    });
-    eddigiKosarban[index] = '';
-    eddigiKosarban[index] = micsoda + ' ' + eredeti.slice(0, -1) + 'db';
-    $('#kosarform').val('');
-    $('#kosarform').val(eddigiKosarban);
+    if(eredeti < 1){
+        alert('Negatív számot nem lehet rendelni!')
+        $('#' + micsoda + 'szam').val(1);
+    }
+    else if(eredeti > 10){
+        alert('10 db-ot rendelhetsz maximum egy termékből!');
+        $('#' + micsoda + 'szam').val(10);
+    }
+    else{
+        artd = $('#' + micsoda + 'artd');
+        var eredetiar = parseInt(ar);
+        var ujar = eredetiar*eredeti;
+        artd.html(ujar.toString() + ' Ft');
+        eredeti+=1;
+        var index = eddigiKosarban.findIndex(element => {
+            if (element.includes(micsoda)) {
+              return true;
+            }
+        });
+        eddigiKosarban[index] = '';
+        eddigiKosarban[index] = micsoda + ' ' + eredeti.slice(0, -1) + 'db';
+        $('#kosarform').val('');
+        $('#kosarform').val(eddigiKosarban);
+    }
 }
 function ugorj(hova){
     window.location.href = hova;
