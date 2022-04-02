@@ -1,5 +1,5 @@
 :root{
-    --piros: # ;
+    --piros: #d72631;
     --vilagospiros: #ff5b65;
     --vilagoskek: #a2d5c6;
     --sotetkek: #077b8a;
@@ -33,7 +33,7 @@ body{
 label{
     color: black;
 }
-h1, td, p, h5, h2, span{
+h1, td, p, h5, h2, span, h3, h4{
     color: whitesmoke;
 }
 nav{
@@ -53,4 +53,24 @@ table tr:last-child td:last-child {
 }
 table tr:last-of-type td{
     border-bottom: 0px;
+}
+#rateszam{
+    color: whitesmoke;
+    background-color: var(--kozeppiros);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+}
+#range{
+    width: 90%;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    border-radius: 5px;
+    height: 7.5px;
+    background: var(--kozeppiros);
+}
+.slider::-webkit-slider-thumb{
+    background-color: var(--vilagospiros);
+    -webkit-appearance: none;
 }

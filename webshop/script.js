@@ -85,3 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 });
+function ratekiir(){
+    $('#rateszam').html($('#range').val().slice(0,3));
+}
