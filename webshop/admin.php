@@ -89,10 +89,32 @@
             </tr>
         </table>
     </form>
-    <hr>
     <?php
         include('torles.php')
     ?>
+    <hr>
+    <form method="post">
+        <table>
+            <caption>
+                Rating Add
+            </caption>
+            <tr>
+                <td>
+                    <input name="mihezad" placeholder="Mihez szeretne addolni?" type="text">
+                </td>
+                <td>
+                    <input type="int" name="mitad" placeholder="Mennyit szeretne addolni?">
+                </td>
+                <td>
+                    <input name="addologomb" value="Addolás" type="submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <?php
+        include('ratingadd.php')
+    ?>
+    <hr>
     <script>
     if(window.history.replaceState) 
     {

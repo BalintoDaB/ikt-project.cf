@@ -41,30 +41,24 @@ function GetSlide() {
   var buy = aktiv[1].getElementsByClassName("cr-buy");
   ActivPic = src[0];
   ActivBuy = buy[0];
-  console.log(ActivBuy);
   var hatter = document.body.style.backgroundColor;
   var color = ["#d72631", "#ff5b65", "#a2d5c6", "#077b8a", "#5c3c92"];
   var color2 = ["#c12f38", "#d25960", "#85aea2", "#085f6b", "#472e6f"];
   if (src[0].src.includes("0.png")) {
     document.getElementById("sec1").style.backgroundColor = color[0];
     ActivBuy.style.backgroundColor = color2[0];
-    console.log("0");
   } else if (src[0].src.includes("1.png")) {
     document.getElementById("sec1").style.backgroundColor = color[1];
     ActivBuy.style.backgroundColor = color2[1];
-    console.log("1");
   } else if (src[0].src.includes("2.png")) {
     document.getElementById("sec1").style.backgroundColor = color[2];
     ActivBuy.style.backgroundColor = color2[2];
-    console.log("2");
   } else if (src[0].src.includes("3.png")) {
     document.getElementById("sec1").style.backgroundColor = color[3];
     ActivBuy.style.backgroundColor = color2[3];
-    console.log("3");
   } else if (src[0].src.includes("4.png")) {
     document.getElementById("sec1").style.backgroundColor = color[4];
     ActivBuy.style.backgroundColor = color2[4];
-    console.log("4");
   }
 }
 function nagyobbit() {
