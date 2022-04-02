@@ -87,3 +87,6 @@ function sima() {
   });
   ActivBuy.style.opacity = "0";
 }
+function ugorj(hova){
+  window.location.href = hova;
+}
