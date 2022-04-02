@@ -1,5 +1,5 @@
 :root{
-    --piros: #d72631;
+    --piros: # ;
     --vilagospiros: #ff5b65;
     --vilagoskek: #a2d5c6;
     --sotetkek: #077b8a;
@@ -33,7 +33,7 @@ body{
 label{
     color: black;
 }
-h1, td, p, h5, h2{
+h1, td, p, h5, h2, span{
     color: whitesmoke;
 }
 nav{

@@ -14,10 +14,9 @@
                   <div class='card-body'>
                     <h5 class='card-title'>$termeknev</h5>
                     <p class='card-text'>$termekar Ft</p>
-                    <form method='post'>
-                      <input type='button' onclick='kosarbatetel($benev, $termekar)' name='$termeknev' value='Kosárba' placeholder='1' class='btn webshopgomb'>
-                    </form>
-                  </div>
+                    <input type='button' onclick='kosarbatetel($benev, $termekar)' name='$termeknev' value='Kosárba' placeholder='1' class='btn webshopgomb'>
+                    <input type='button' onclick='ugorj(" . '"termek.php?termek=' . $termeknev . '"' . ")' name='' value='Termék megtekintése' placeholder='1' class='btn webshopgomb'>
+                    </div>
                 </div>
               </div>";
         };

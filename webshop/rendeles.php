@@ -22,7 +22,7 @@
             echo "<h1>Sikeres Megrendelés!</h1>";
             echo "<h2>A következő a megrendelési kódod: $kod</h2></br>";
             echo "<input type='button' class='my-4 btn webshopgomb' onclick='ugorj(" . '"' . "allapot.php?kod=$kod" . '"' . ")' value='Rendelés állapotának megtekintése'>";
-            $emailtargy = $kod . ' számú megrendelés'
+            $emailtargy = $kod . ' számú megrendelés';
             $emailtorzs =  '<div style="text-align: center;">
             <h1>Sikeres Megrendelés '. $nev . ' Számára!</h1<br>
             <h2>A következő a rendelési azonosítója:' . $kod . '</h2><br>
