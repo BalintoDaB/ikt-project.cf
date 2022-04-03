@@ -30,7 +30,7 @@
         </nav>
     </header>
     <div class="container">    
-        <div class="row">
+        <div class="row justify-content-start">
         <?php
         include('szervercsatlakozas.php');
         include('webshopbetolt.php');
