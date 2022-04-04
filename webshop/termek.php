@@ -63,13 +63,17 @@
         <div class="col-12 col-md-6 text-center">
             <h3>Termék értékelése</h3>
             <form method="post">
-                <div class="row mt-4">
-                    <div class="col-12 col-md-8">
-                        <input type="range" class="ml-auto" oninput="ratekiir()" name="ratein" value="3" min="1" max="5" id="range">
-                    </div>
-                    <div class="col-12 col-md-4 text-center">
-                        <h4 id="rateszam" class="text-center mx-auto">5</h4>
-                    </div>
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
                 </div>
                 <div class="row mt-4">
                     <div class="col-12 col-md-12">

@@ -23,7 +23,7 @@
                 <div class="container">
                     <object height="50px" data="../logo1.svg" type="image/svg+xml"></object>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
-                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span> 
                     </button>
                     <div class="collapse navbar-collapse" id="main_nav">
                         <ul class="navbar-nav ms-auto">
