@@ -22,15 +22,15 @@
             <tbody>
                 <tr>
                     <td>
-                        <input type="text" name="Username_1" id="Username_1">
+                        <input type="text" required name="Username_1" id="Username_1">
                     </td>
                     <td>
-                        <input type="text" name="Password_1" id="Password_1">
+                        <input type="text" required name="Password_1" id="Password_1">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <input type="submit" value="Login" name="leadas" id="leadas">
+                        <input type="submit" value="Login" name="loglead" id="leadas">
                     </td>
                 </tr>
             </tbody>
@@ -39,7 +39,6 @@
     </form>
     <hr>
     <?php
-        include('szervercsatlakozas.php');
         include('loginb.php')
     ?>
     <hr>
