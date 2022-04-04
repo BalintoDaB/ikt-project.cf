@@ -65,16 +65,35 @@
             <h3>Termék értékelése</h3>
             <form method="post">
                 <div class="rate">
-                    <input type="radio" id="star5" name="rate" value="5" />
+                    <input type="radio" id="star5" name="rate5" value="5" />
                     <label for="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4" name="rate" value="4" />
+                    <input type="radio" id="star4" name="rate4" value="4" />
                     <label for="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3" name="rate" value="3" />
+                    <input type="radio" id="star3" name="rate3" value="3" />
                     <label for="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2" name="rate" value="2" />
+                    <input type="radio" id="star2" name="rate2" value="2" />
                     <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="rate" value="1" />
+                    <input type="radio" id="star1" name="rate1" value="1" />
                     <label for="star1" title="text">1 star</label>
+                    <?php
+                        if(isset($_POST['ratinglead'])){                            
+                            include_once('osztalyok.php');
+                            include('szervercsatlakozas.php');
+                            $counter = 0;
+                            while(true){
+                                $counter++;
+                                $userrate = $_POST['rate' . $counter];
+                                if(isset($userrate)){
+                                    break;
+                                }
+                            };
+                            $ratel = new Rating();
+                            if($ratel->rateAdd($termeknev,intval($userrate))){
+                                echo"<script>alert('Sikeres értékelés!')</script>";
+                                header("Refresh:0");
+                            };
+                        }
+                    ?>
                 </div>
                 <div class="row mt-4">
                     <div class="col-12 col-md-12">

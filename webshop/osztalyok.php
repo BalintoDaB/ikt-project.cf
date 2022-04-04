@@ -42,4 +42,20 @@
             }
         }
     };
+    class Rating{
+        function rateAdd($ad, $mennyitad){
+            include('szervercsatlakozas.php');
+            $egy = intval(1);
+            $sql = "UPDATE webshopitemek SET RatingAll= RatingAll + $mennyitad WHERE neve = '$ad'";
+            $sql2 = "UPDATE webshopitemek SET NumOfRatings= NumOfRatings + $egy WHERE neve = '$ad'";
+            $sql3 = "UPDATE webshopitemek SET Rating= RatingAll / NumOfRatings WHERE neve = '$ad'";
+            if (mysqli_query($csatlakozas, $sql) && mysqli_query($csatlakozas, $sql2) && mysqli_query($csatlakozas, $sql3)){
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        }
+    }
 ?>
