@@ -24,6 +24,15 @@
                         <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
                         <li class="nav-item"><a class="nav-link" href="allapot.php">Rendelés állapota</a></li>
+                        <li class="nav-item"><?php
+                            if(isset($_COOKIE['uname'])){
+                                $uname = $_COOKIE['uname'];
+                                echo "<span class='nav-link' id='bejelentkezett' onmouseover='atir()' onmouseleave='visszair()'>Bejelentkezve mint $uname</span>";
+                            }
+                            else{
+                                echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';
+                            }
+                        ?></a></li>
                     </ul>
                 </div>
             </div>

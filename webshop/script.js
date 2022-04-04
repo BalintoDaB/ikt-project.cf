@@ -1,5 +1,6 @@
 var eddigiKosarban = [''];
 var szamlalo = 0;
+var eredetib = '';
 function kosarbatetel(nev, ar){
     var v = $.trim(nev);
     var micsoda = '';
@@ -87,4 +88,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 function ratekiir(){
     $('#rateszam').html($('#range').val().slice(0,3));
+}
+function createCookie(mibol){
+    document.cookie = "uname=" + mibol + '"';
+    alert(getCookie('uname'));
+}
+function getCookie(mit){
+    var cookieE = mit + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++){
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1, c.length);
+        if (c.indexOf(cookieE) == 0){
+            return c.substring(cookieE.length,c.length);
+        }
+        else{
+            return null;
+        }
+    }
+}
+function atir(){
+    eredetib = $('#bejelentkezett').html();
+    $('#bejelentkezett').html('Kijelentkezés');
+}
+function visszair(){
+    $('#bejelentkezett').html(eredetib);
 }

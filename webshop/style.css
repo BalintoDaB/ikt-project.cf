@@ -74,3 +74,6 @@ table tr:last-of-type td{
     background-color: var(--vilagospiros);
     -webkit-appearance: none;
 }
+#bejelentkezett:hover{
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@
         $login = new Loginform();
         if($login->loginEll($uname, $pword)){
             echo "Sikeres, $uname, $pword";
+            echo "<script>createCookie('$uname');</script>";
         }
         else{
             echo"Rossz, $uname, $pword";

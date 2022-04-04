@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            function createCookie(mibol){
+                document.cookie = "uname=" + mibol;
+                kuki = getCookie('uname');
+                alert(kuki);
+            }
+            function getCookie(mit){
+                var cookieE = mit + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i < ca.length; i++){
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1, c.length);
+                        if (c.indexOf(cookieE) == 0){
+                            return c.substring(cookieE.length,c.length);
+                        }
+                        else{
+                            return null;
+                        }
+                            }
+                        }
+            </script>
 </head>
 <body>
     <form method="post" id="form1">
@@ -39,6 +60,7 @@
     </form>
     <hr>
     <?php
+        include('szervercsatlakozas.php');
         include('loginb.php')
     ?>
     <hr>
@@ -90,5 +112,6 @@
         changeFrom.style.display = "none";
     }
 </script>
+<!-- <script src="script.js"></script> -->
 </body>
 </html>

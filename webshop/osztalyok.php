@@ -1,8 +1,9 @@
 <?php
     class Loginform{
+        public $eredmeny;
         function loginEll($uname, $pword){
-            $sql = "SELECT * FROM loginform WHERE Username = '$uname' AND Pass = '$pword'";
             include('szervercsatlakozas.php');
+            $sql = "SELECT * FROM loginform WHERE Username = '$uname' AND Pass = '$pword'";
             $mennyi = $csatlakozas->query($sql);
             if ($mennyi->num_rows > 0){
                 return True;
@@ -12,7 +13,6 @@
             }
         }
         function regisztralas($uname,$regemail,$pword){
-            public $eredmeny;
             include('szervercsatlakozas.php');
             $sql = "SELECT * FROM loginform WHERE Username='$uname' OR Email='$regemail'";
             $duplicate=mysqli_query($csatlakozas,$sql);
