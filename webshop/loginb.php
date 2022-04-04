@@ -5,11 +5,12 @@
         $pword = $_POST['Password_1'];
         $login = new Loginform();
         if($login->loginEll($uname, $pword)){
-            echo "Sikeres, $uname, $pword";
+            echo "<h1>Sikeres bejelentkezés mint $uname!</h1>";
             echo "<script>createCookie('$uname');</script>";
+            // header("Location: webshop.php");
         }
         else{
-            echo"Rossz, $uname, $pword";
+            echo"<script>alert('Rosszak a bejelentkezési adatok!');</script>";
         }
     }
 ?>

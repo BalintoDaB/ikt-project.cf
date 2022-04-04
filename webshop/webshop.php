@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src='script.js'></script>
+        <link rel="icon" href="../logo1.svg" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -25,9 +26,9 @@
                         <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
                         <li class="nav-item"><a class="nav-link" href="allapot.php">Rendelés állapota</a></li>
                         <li class="nav-item"><?php
-                            if(isset($_COOKIE['uname'])){
+                            if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != ''){
                                 $uname = $_COOKIE['uname'];
-                                echo "<span class='nav-link' id='bejelentkezett' onmouseover='atir()' onmouseleave='visszair()'>Bejelentkezve mint $uname</span>";
+                                echo "<span class='nav-link' id='bejelentkezett' onmouseover='atir()' onclick='kijelentkezes()' onmouseleave='visszair()'>Üdvözlet, $uname</span>";
                             }
                             else{
                                 echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';

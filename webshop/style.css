@@ -76,6 +76,7 @@ table tr:last-of-type td{
 }
 #bejelentkezett:hover{
     cursor: pointer;
+}
 *{
     margin: 0;
     padding: 0;
@@ -114,4 +115,7 @@ table tr:last-of-type td{
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
+}
+.lathatatlan{
+    display: none;
 }

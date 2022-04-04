@@ -1,6 +1,6 @@
 <?php
     class Loginform{
-        public $eredmeny;
+        public $eredmeny = '';
         function loginEll($uname, $pword){
             include('szervercsatlakozas.php');
             $sql = "SELECT * FROM loginform WHERE Username = '$uname' AND Pass = '$pword'";
@@ -12,28 +12,33 @@
                 return False;
             }
         }
-        function regisztralas($uname,$regemail,$pword){
-            include('szervercsatlakozas.php');
-            $sql = "SELECT * FROM loginform WHERE Username='$uname' OR Email='$regemail'";
-            $duplicate=mysqli_query($csatlakozas,$sql);
-            if (mysqli_num_rows($duplicate)>0)
-            {
-                echo 'User name or Email id already exists.';
-                $eredmeny = "marvanilyen";
+        function regisztralas($uname,$regemail,$pword,$pword2){
+            if($pword == $pword2){
+                include('szervercsatlakozas.php');
+                $sql = "SELECT * FROM loginform WHERE Username='$uname' OR Email='$regemail'";
+                $duplicate=mysqli_query($csatlakozas,$sql);
+                if (mysqli_num_rows($duplicate)>0)
+                {
+                    echo '<script>alert("Ezzel a névvel vagy emaillel regisztráltak már!")</script>';
+                    return "mar van ilyen";
+                }
+                else{
+                    try {
+                        $sql = "INSERT INTO loginform (Username, Email, Pass) VALUES ('$uname','$regemail','$pword')";
+                        mysqli_query($csatlakozas, $sql);
+                        echo '<script>alert("Sikeres regisztráció, ' . $uname . '!")</script>';
+                        return "sikeres";
+                    }
+                    catch(PDOException $e)
+                        {
+                            echo $sql . "
+                            " . $e->getMessage();
+                            return "hiba";
+                        }
+                }
             }
             else{
-                try {
-                    $sql = "INSERT INTO loginform (Username, Email, Pass) VALUES ('$uname','$regemail','$pword')";
-                    mysqli_query($csatlakozas, $sql);
-                    echo 'Registered';
-                    $eredmeny = "sikeres";
-                }
-                catch(PDOException $e)
-                    {
-                        echo $sql . "
-                        " . $e->getMessage();
-                        $eredmeny = "hiba";
-                    }
+                echo"<script>alert('A 2 jelszó nem egyezik!');</script>";
             }
         }
     };

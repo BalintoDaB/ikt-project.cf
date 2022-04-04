@@ -114,3 +114,13 @@ function atir(){
 function visszair(){
     $('#bejelentkezett').html(eredetib);
 }
+function loginToReg(){
+    $('#loginbox').css('display','none');
+    $('#regbox').removeClass('d-none');
+    // $('#regbox').addClass('d-block')
+}
+function kijelentkezes(){
+    document.cookie = "uname=";
+    document.location.href = 'http://ikt-project.rf.gd/webshop/webshop.php';
+    alert('Sikeres kijelentkezés!');
+}
