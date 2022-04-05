@@ -2,25 +2,7 @@ var ActivPic;
 var ActivBuy;
 var magassag;
 
-var intervalId = window.setInterval(function () {
-  GetSlide();
-}, 100);
-
 document.addEventListener("DOMContentLoaded", function () {
-  var kepek = document.getElementsByClassName("carousel-item");
-  var szam = 0;
-  while (szam != 5) {
-    var src = kepek[szam].getElementsByClassName("cr-kep");
-    src[0].style.height = "80%";
-    if (window.screen.width < 1000) {
-      src[0].style.height = "60%";
-    } else if (window.screen.width < 770) {
-      src[0].style.height = "40%";
-    } else if (window.screen.width < 400) {
-      src[0].style.height = "10%";
-    }
-    szam++;
-  }
   window.addEventListener("scroll", function () {
     if (window.scrollY > 50) {
       document.getElementById("navbar_top").classList.add("fixed-top");
