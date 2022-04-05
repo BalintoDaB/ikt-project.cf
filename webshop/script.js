@@ -127,10 +127,10 @@ function getCookie(mit) {
     }
   }
 }
-function atir() {
-  eredetib = $("#bejelentkezett").html();
-  $("#bejelentkezett").html("Kijelentkezés");
-}
+// function atir() {
+//   eredetib = $("#bejelentkezett").html();
+//   $("#bejelentkezett").html("Kijelentkezés");
+// }
 function visszair() {
   $("#bejelentkezett").html(eredetib);
 }
@@ -144,15 +144,7 @@ function kijelentkezes() {
   document.location.href = "http://ikt-project.rf.gd/webshop/webshop.php";
   alert("Sikeres kijelentkezés!");
 }
-<<<<<<< HEAD
-function kijelentkezes(){
-    document.cookie = "uname=";
-    document.location.href = 'http://ikt-project.rf.gd/webshop/webshop.php';
-    alert('Sikeres kijelentkezés!');
-}
 function loginToReset(){
     $('#loginbox').css('display','none');
     $('#resetbox').removeClass('d-none');
 }
-=======
->>>>>>> 5b1d0422e609ab23b62a602ce4af2cdd51f5befd

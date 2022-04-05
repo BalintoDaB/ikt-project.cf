@@ -170,17 +170,18 @@
                                     </div>
                                     <div class="row justify-content-center mt-3">
                                         <div class="col-12 col-md-4">
-                                            <input type="submit" class="btn webshopgomb" value="Email küldése" name="jelszoreszet">
+                                            <input type="submit" class="btn webshopgomb" value="Email küldése" name="jelszoreset">
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <input type="button" class="btn webshopgomb" value="Vissza" onclick="window.location.reload()">
                                         </div>
                                         <?php
-                                            include_once('osztalyok.php');
-                                            $resetel = new Loginform();
-                                            $gomb = $_POST['jelszoreszet'];
-                                            $email = $_POST['resetemail'];
-                                            $resetel->jelszoReset($gomb,$email);
+                                            if(isset($_POST['jelszoreset'])){
+                                                include_once('osztalyok.php');
+                                                $resetel = new Loginform();
+                                                $email = $_POST['resetemail'];
+                                                $resetel->jelszoReset($email);
+                                            }
                                         ?>
                                     </div>
                                 </div>

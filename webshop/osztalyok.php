@@ -53,14 +53,51 @@
                 echo"<script>alert('A 2 jelszó nem egyezik!');</script>";
             }
         }
-        function jelszoReset($miaktivalja,$hova){
-            if(isset($miaktivalja)){
-                include('szervercsatlakozas.php');
-                $generaltJelszo = $getRandomString(10);
-                $sql = "UPDATE loginform SET Pass VALUE '$generaltJelszo' WHERE Email = '$hova'";
-                $mennyi = $csatlakozas->query($sql);
-                if ($mennyi->num_rows > 0){
-                    echo"<script>alert($hova,$generaltJelszo)</script>";
+        function jelszoReset($email){
+            include('szervercsatlakozas.php');
+            $generaltJelszo = md5($this->getRandomString(10));
+            $sql = "SELECT * FROM loginform WHERE email = '$email'";
+            $mennyi = $csatlakozas->query($sql);
+            if ($mennyi->num_rows > 0){
+                $sql = "UPDATE loginform SET helyreallitasi = '$generaltJelszo' WHERE Email = '$email'";
+                if (mysqli_query($csatlakozas, $sql)){
+                    echo"<script>alert('A(z) $email email címhez tartozó profil új jelszavát elküldtük Ön számára emailben!')</script>";
+                    $emailtargy = "Jelszo Visszaallitas";
+                    $emailtorzs = "<div style='text-align:center'>
+                                    <h1>Jelszó visszaálltás</h1>
+                                    <h3>Kérjük <a href='http://ikt-project.rf.gd/webshop/jelszovaltoztat.php?generaltKod=$generaltJelszo'>változtassa meg jelszavát!</a></h3>
+                                    <h4>Üdvözlettel: Custom Cases</h4>
+                                    </div>";
+                    include('index.php');
+                }
+            }
+            else{
+                echo"<script>alert('Nem létezik ilyen email címmel regisztráció!');</script>";
+            }
+        }
+        function jelszoValtoztat($mibe,$regi,$uj,$milyen){
+            include('szervercsatlakozas.php');
+            $hasheltRegi = md5($regi);
+            $hasheltJelszo = md5($uj);
+            $sql = "SELECT * FROM loginform WHERE Username = '$mibe'";
+            $mennyi = $csatlakozas->query($sql);
+            if ($mennyi->num_rows > 0){
+                $sor = $mennyi->fetch_assoc();
+                $regipword = $sor['Pass'];
+                $helyreallitasi = $sor['helyreallitasi'];
+                if($milyen){
+                    if($regipword = $hasheltRegi){
+                        $sql = "UPDATE loginform SET Pass = '$hasheltJelszo', helyreallitasi = '' WHERE Username = '$mibe'";
+                        if(mysqli_query($csatlakozas, $sql)){
+                            echo"<script>alert('Sikeres jelszóváltoztatás!');document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
+                        }
+                    }
+                }
+                else{
+                    $sql = "UPDATE loginform SET Pass = '$hasheltJelszo', helyreallitasi = '' WHERE Username = '$mibe'";
+                    if(mysqli_query($csatlakozas, $sql)){
+                        echo"<script>alert('Sikeres jelszóváltoztatás!');document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
+                    }
                 }
             }
         }

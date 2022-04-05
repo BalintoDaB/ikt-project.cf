@@ -28,12 +28,22 @@
                         <li class="nav-item"><?php
                             if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != ''){
                                 $uname = $_COOKIE['uname'];
-                                echo "<span class='nav-link' id='bejelentkezett' onmouseover='atir()' onclick='kijelentkezes()' onmouseleave='visszair()'>Üdvözlet, $uname</span>";
+                                // echo "<span class='nav-link' id='bejelentkezett' onmouseover='atir()' onclick='kijelentkezes()' onmouseleave='visszair()'>Üdvözlet, $uname</span>";
+                                echo '
+                                  <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Üdvözlet, ' . $uname . '
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                      <li><a class="dropdown-item" href="#" onclick="kijelentkezes()">Kijelentkezés</a></li>
+                                      <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
+                                    </ul>
+                                  </li>';
                             }
                             else{
                                 echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';
                             }
-                        ?></a></li>
+                        ?></li>
                     </ul>
                 </div>
             </div>
