@@ -88,7 +88,8 @@
                                     </div>
                                     <div class="row justify-content-center mt-2">
                                         <div class="col-12 col-md-8">
-                                            <span>Nincs még profilja? <b onclick="loginToReg()" style="cursor:pointer">Regisztráljon!</b></span>
+                                            <span>Nincs még profilja? <b onclick="loginToReg()" style="cursor:pointer">Regisztráljon!</b></span><br>
+                                            <span>Elfelejtette jelszavát? <b onclick="loginToReset()" style="cursor:pointer">Kattintson ide!</b></span>
                                         </div>
                                     </div>
                                 </div>
@@ -154,6 +155,36 @@
                                 </div>
                             </div>
                         </div>
+                        </form>
+                        <form method="post">
+                            <div id="resetbox" class="d-none mt-3">
+                                <h1>Jelszó helyreállítás</h1>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-md-12">
+                                            <div class="form-floating mb-3">
+                                                <input required name="resetemail" type="text" class="form-control" id="resetemail" placeholder="minta@gmail.com">
+                                                <label for="resetemail">Email cím<span class="text-danger">*</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center mt-3">
+                                        <div class="col-12 col-md-4">
+                                            <input type="submit" class="btn webshopgomb" value="Email küldése" name="jelszoreszet">
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <input type="button" class="btn webshopgomb" value="Vissza" onclick="window.location.reload()">
+                                        </div>
+                                        <?php
+                                            include_once('osztalyok.php');
+                                            $resetel = new Loginform();
+                                            $gomb = $_POST['jelszoreszet'];
+                                            $email = $_POST['resetemail'];
+                                            $resetel->jelszoReset($gomb,$email);
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

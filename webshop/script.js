@@ -124,3 +124,7 @@ function kijelentkezes(){
     document.location.href = 'http://ikt-project.rf.gd/webshop/webshop.php';
     alert('Sikeres kijelentkezés!');
 }
+function loginToReset(){
+    $('#loginbox').css('display','none');
+    $('#resetbox').removeClass('d-none');
+}

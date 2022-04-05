@@ -3,7 +3,8 @@
         public $eredmeny = '';
         function loginEll($uname, $pword){
             include('szervercsatlakozas.php');
-            $sql = "SELECT * FROM loginform WHERE Username = '$uname' AND Pass = '$pword'";
+            $hasheltJelszo = md5($pword);
+            $sql = "SELECT * FROM loginform WHERE Username = '$uname' AND Pass = '$hasheltJelszo'";
             $mennyi = $csatlakozas->query($sql);
             if ($mennyi->num_rows > 0){
                 return True;
@@ -11,6 +12,16 @@
             else{
                 return False;
             }
+        }
+        function getRandomString($n) {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $randomString = '';
+          
+            for ($i = 0; $i < $n; $i++) {
+                $index = rand(0, strlen($characters) - 1);
+                $randomString .= $characters[$index];
+            }
+            return $randomString;
         }
         function regisztralas($uname,$regemail,$pword,$pword2){
             if($pword == $pword2){
@@ -24,7 +35,8 @@
                 }
                 else{
                     try {
-                        $sql = "INSERT INTO loginform (Username, Email, Pass) VALUES ('$uname','$regemail','$pword')";
+                        $hasheltJelszo = md5($pword);
+                        $sql = "INSERT INTO loginform (Username, Email, Pass) VALUES ('$uname','$regemail','$hasheltJelszo')";
                         mysqli_query($csatlakozas, $sql);
                         echo '<script>alert("Sikeres regisztráció, ' . $uname . '!")</script>';
                         return "sikeres";
@@ -39,6 +51,17 @@
             }
             else{
                 echo"<script>alert('A 2 jelszó nem egyezik!');</script>";
+            }
+        }
+        function jelszoReset($miaktivalja,$hova){
+            if(isset($miaktivalja)){
+                include('szervercsatlakozas.php');
+                $generaltJelszo = $getRandomString(10);
+                $sql = "UPDATE loginform SET Pass VALUE '$generaltJelszo' WHERE Email = '$hova'";
+                $mennyi = $csatlakozas->query($sql);
+                if ($mennyi->num_rows > 0){
+                    echo"<script>alert($hova,$generaltJelszo)</script>";
+                }
             }
         }
     };
