@@ -61,7 +61,7 @@
             if ($mennyi->num_rows > 0){
                 $sql = "UPDATE loginform SET helyreallitasi = '$generaltJelszo' WHERE Email = '$email'";
                 if (mysqli_query($csatlakozas, $sql)){
-                    echo"<script>alert('A(z) $email email címhez tartozó profil új jelszavát elküldtük Ön számára emailben!')</script>";
+                    echo"<script>alert('Kövesse a linket, amelyet a $email email címre küldtünk.')</script>";
                     $emailtargy = "Jelszo Visszaallitas";
                     $emailtorzs = "<div style='text-align:center'>
                                     <h1>Jelszó visszaálltás</h1>
@@ -84,7 +84,6 @@
             if ($mennyi->num_rows > 0){
                 $sor = $mennyi->fetch_assoc();
                 $regipword = $sor['Pass'];
-                $helyreallitasi = $sor['helyreallitasi'];
                 if($milyen){
                     if($regipword = $hasheltRegi){
                         $sql = "UPDATE loginform SET Pass = '$hasheltJelszo', helyreallitasi = '' WHERE Username = '$mibe'";
@@ -116,6 +115,68 @@
                 return false;
             }
 
+        }
+    };
+    class Fiok{
+        function adatokLekerdez($uname){
+            include('szervercsatlakozas.php');
+            $sql = "SELECT * FROM accountAdatok WHERE username = '$uname'";
+            $mennyi = $csatlakozas->query($sql);
+            if ($mennyi->num_rows > 0){
+                $sor = $mennyi->fetch_assoc();
+                $email = $sor['email'];
+                $nev = $sor['nev'];
+                $telszam = $sor['telszam'];
+                $orszag = $sor['orszag'];
+                $megye = $sor['megye'];
+                $varos = $sor['varos'];
+                $irszam = $sor['iranyitoszam'];
+                $cim = $sor['cim'];
+                $megjegyzes = $sor['megjegyzes'];
+                $kerEmailt = $sor['kerEmailt'];
+                if($megjegyzes != '' and $megjegyzes != null){
+                    return $lista = array(
+                            "email" => $sor['email'],
+                            "nev" => $sor['nev'],
+                            "telszam" => $sor['telszam'],
+                            "orszag" => $sor['orszag'],
+                            "megye" => $sor['megye'],
+                            "irszam" => $sor['varos'],
+                            "cim" => $sor['cim'],
+                            "kerEmailt" => $sor['kerEmailt'],
+                            "vane" => true,
+                            "megjegyzes" => $sor['megjegyzes'],
+                    );
+                }
+                else{
+                    return $lista = array(
+                        "email" => $sor['email'],
+                        "nev" => $sor['nev'],
+                        "telszam" => $sor['telszam'],
+                        "orszag" => $sor['orszag'],
+                        "megye" => $sor['megye'],
+                        "irszam" => $sor['varos'],
+                        "cim" => $sor['cim'],
+                        "kerEmailt" => $sor['kerEmailt'],
+                        "vane" => true,
+                        "megjegyzes" => "''",
+                    );
+                }
+            }
+            else{
+                return $lista = array(
+                    "email" => "''",
+                    "nev" => "''",
+                    "telszam" => "''",
+                    "orszag" => "''",
+                    "megye" => "''",
+                    "varos" => "''", 
+                    "irszam" => "''",
+                    "cim" => "''",
+                    "megjegyzes" => "''",
+                    "kerEmailt" => "''",
+                );
+            }
         }
     }
 ?>
