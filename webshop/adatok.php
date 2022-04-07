@@ -22,6 +22,7 @@
                         <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
+                        <li class="nav-item"><a class="nav-link" href="webshop.php">Webshop</a></li>
                         <li class="nav-item"><a class="nav-link" href="allapot.php">Rendelés állapota</a></li>
                         <li class="nav-item"><?php
                             if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != ''){
@@ -34,6 +35,7 @@
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
                                 <li><a class="dropdown-item" href="adatok.php">Adatok</a></li>
+                                <li><a class="dropdown-item" href="#" href="megrendeleseim.php">Megrendeléseim</a></li>
                                 <li><a class="dropdown-item" href="#" onclick="kijelentkezes()">Kijelentkezés</a></li>
                                 </ul>
                                   </li>';
@@ -49,15 +51,18 @@
     </header>
     <div class="container">
     <div class="text-center">
-            <h1 class="mb-4">
+            <h1 class="my-4">
                 <?php
                 require_once('osztalyok.php');
                 $leker = new Fiok();
                 $adatok = $leker->adatokLekerdez($uname);
                 echo"$uname szállítási adatai";
                 $vane = $adatok['vane'];
-                if($adatok['kerEmailt'] = 1){
+                if($adatok['kerEmailt'] == 1){
                     $kelle = 'checked';
+                }
+                else{
+                    $kelle = '""';
                 };
                 ?>
             </h1>
@@ -137,7 +142,7 @@
                                 include('szervercsatlakozas.php');
                                 $sql = "DELETE FROM accountAdatok WHERE username = '$uname'";
                                 if(mysqli_query($csatlakozas,$sql)){
-                                    echo"<script>alert('Sikeres Törlés! (kérjünk frissítse a weboldalt)')</script>";
+                                    echo"<script>alert('Sikeres Törlés! (kérjük frissítse a weboldalt)');</script>";
                                 }
                             }
                             if(isset($_POST['submit'])){
@@ -152,23 +157,18 @@
                                 $megjegyzes = $_POST['megjegyzes'];
                                 $kerEmailt = $_POST['emailkergomb'];
                                 if($vane){
-                                    $sql = "UPDATE accountAdatok email = '$email', nev = '$nev', telszam = '$telszam', orszag = '$orszag', megye = '$megye', varos = '$irszam', cim = '$cim', megjegyzes = '$megjegyzes', kerEmailt = '$kerEmailt' WHERE username = '$uname'";
+                                    $sql = "UPDATE accountAdatok SET email = '$email', nev = '$nev', telszam = '$telszam', orszag = '$orszag', megye = '$megye', varos = '$irszam', cim = '$cim', megjegyzes = '$megjegyzes', kerEmailt = '$kerEmailt' WHERE username = '$uname'";
                                 }
                                 else{
                                     $sql = "INSERT INTO accountAdatok (username,email,nev,telszam,orszag,megye,varos,cim,megjegyzes,kerEmailt) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyzes','$kerEmailt')";
                                 }
                                 if(mysqli_query($csatlakozas,$sql)){
-                                    echo"<script>alert('Sikeres Változtatás!');window.location.reload();</script>";
+                                    echo"<script>alert('Sikeres Változtatás! (kérjük frissítse a weboldalt)');</script>";
                                 }
                             }
                         ?>
                 </div>
             </form>
-            <hr>
-            <div class="row">
-                <div class="col-12 col-md-12 text-center" id="rendeles">
-                </div>
-            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

@@ -175,7 +175,45 @@
                     "cim" => "''",
                     "megjegyzes" => "''",
                     "kerEmailt" => "''",
+                    "vane" => false,
                 );
+            }
+        }
+        function accountRendeles($uname,$kosar){
+            include('szervercsatlakozas.php');
+            $sql = "SELECT * FROM accountAdatok WHERE username = '$uname'";
+            $mennyi = $csatlakozas->query($sql);
+            if ($mennyi->num_rows > 0){
+                $sor = $mennyi->fetch_assoc();
+                $email = $sor['email'];
+                $nev = $sor['nev'];
+                $telszam = $sor['telszam'];
+                $orszag = $sor['orszag'];
+                $megye = $sor['megye'];
+                $varos = $sor['varos'];
+                $irszam = $sor['varos'];
+                $cim = $sor['cim'];
+                $megjegyzes = $sor['megjegyzes'];
+                $kerEmailt = $sor['kerEmailt'];
+                $kod = rand(0, 9999999);
+                if($kerEmailt == 1){
+                    $sql = "INSERT INTO rendelesek (email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot) VALUES ('$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyz','$kosar','$kod', '1', 'Rendelés leadva')";
+                }
+                else{
+                    $sql = "INSERT INTO rendelesek (email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot) VALUES ('$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyz','$kosar','$kod', '0', 'Rendelés leadva')";
+                }
+                if(mysqli_query($csatlakozas,$sql)){
+                    echo"<script>alert('Sikeres megrendelés!');</script>";
+                    $emailtargy = $kod . ' számú megrendelés';
+                    $emailtorzs =  '<div style="text-align: center;">
+                    <h1>Sikeres Megrendelés '. $nev . ' Számára!</h1<br>
+                    <h2>A következő a rendelési azonosítója:' . $kod . '</h2><br>
+                    <h3>Ön a következő(ket) rendelte:' . $rendeles . '</h3>
+                    <h3>A rendelésének állapotának megtekintéséhez kérjük látogasson el a <a style="font-weight: bold;" href="http://ikt-project.rf.gd/webshop/allapot.php?kod=' . $kod . '">weboldalunkra!</a></h3>
+                    <h4>Köszönettel: Custom Cases</h4>
+                    </div>';
+                    include('index.php');
+                }
             }
         }
     }

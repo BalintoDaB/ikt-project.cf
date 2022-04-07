@@ -24,7 +24,6 @@
                         <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
-                        <li class="nav-item"><a class="nav-link" href="allapot.php">Rendelés állapota</a></li>
                         <li class="nav-item"><?php
                             if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != ''){
                                 $uname = $_COOKIE['uname'];
@@ -36,6 +35,7 @@
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                     <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
                                     <li><a class="dropdown-item" href="adatok.php">Adatok</a></li>
+                                    <li><a class="dropdown-item" href="#" href="megrendeleseim.php">Megrendeléseim</a></li>
                                     <li><a class="dropdown-item" href="#" onclick="kijelentkezes()">Kijelentkezés</a></li>
                                     </ul>
                                   </li>';
@@ -88,87 +88,33 @@
         <hr class="my-4">
         <div class="text-center">
             <h1 class="mb-4">
-                Szállítási és fizetési adatok
+                Megrendelés
             </h1>
             <form method="post">
-                <input required type="hidden" name="kosar" id="kosarform">
-                <div class="row mb-4">
-                    <div class="col-12 col-md-4">
-                        <div class="form-floating mb-3">
-                            <input required autocomplete="email" name="email" type="email" class="form-control" id="emailin" placeholder="minta@gmail.com">
-                            <label for="emailin">Email Cím<span class="text-danger">*</span></label>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="form-floating mb-3">
-                            <input required autocomplete="name" name="name" type="text" class="form-control" id="nevin" placeholder="Molnár Bálint">
-                            <label for="nevin">Név<span class="text-danger">*</span></label>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="form-floating mb-3">
-                            <input required autocomplete="tel" name="telszam" type="text" class="form-control" id="telin" placeholder="+36201234567">
-                            <label for="telin">Telefonszám<span class="text-danger">*</span></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row my-4">
-                    <div class="col-12 col-md-4">
-                        <div class="form-floating mb-3">
-                            <input required autocomplete="country-name" name="orszag" type="text" class="form-control" id="orszagin" placeholder="Magyarország">
-                            <label for="orszagin">Ország<span class="text-danger">*</span></label>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="form-floating mb-3">
-                            <input required type="text" class="form-control" name="megye" id="megyein" placeholder="Győr-Moson-Sopron megye">
-                            <label for="megyein">Megye/Állam<span class="text-danger">*</span></label>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="form-floating mb-3">
-                            <input required autocomplete="postal-code" name="iranyitoszam" type="text" class="form-control" id="iranyin" placeholder="9200">
-                            <label for="iranyin">Irányítószám<span class="text-danger">*</span></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row my-4">
-                    <div class="col-12 col-md-12">
-                        <div class="form-floating mb-3">
-                            <input required autocomplete="address-line1" name="cim" type="text" class="form-control" id="cimin" placeholder="Mosonmagyaróvár, Fő utca 1.">
-                            <label for="cimin">Cím<span class="text-danger">*</span></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-8">
-                        <div class="form-floating mb-3 w-100">
-                            <input name="megjegyzes" type="text" class="form-control" id="megjegyzen" placeholder="Megjegyzés">
-                            <label for="megjegyzen">Megjegyzés</label>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 d-flex align-items-center">
-                        <div class="form-check mx-auto">
-                            <input class="form-check-input" type="checkbox" name="emailkergomb" id="emailkergomb">
-                            <label class="form-check-label" for="emailkergomb" style="color:white">Szeretnék e-mailt kapni ha változik a rendelésem állapota</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-6 p-4">
-                        <input required class="btn webshopgomb" type="reset" value="Adatok törlése">
-                    </div>
-                    <div class="col-12 col-md-6 p-4">
-                        <input required class="btn webshopgomb" name="submit" type="submit" value="Vásárlás">
-                    </div>
-                </div>
+            <input required type="hidden" name="kosar" id="kosarform">
+            <div class="row justify-content-center"> 
+                    <?php
+                        if(isset($_COOKIE['uname']) and $_COOKIE['uname'] != ''){
+                            echo '<div class="col-12 col-md-6">
+                            <input type="submit" name="rendelesleadas" class="btn mt-3 webshopgomb" value="Megrendelés mint ' . $uname . '">
+                            </div><div class="col-12 col-md-6"><input type="button" class="btn mt-3 webshopgomb" value="Felhasználóváltás" onclick="kijelentkezes();ugorj(' . "'login.php'" . ');"></div>';
+                        }
+                        else{
+                            echo"<div class='col-12 col-md-6'><input class='btn webshopgomb' type='button' value='Kérem jelentkezzen be!' onclick='ugorj(" . '"login.php"' . ")'></div>";
+                        }
+                    ?>
+            </div>
             </form>
             <hr>
             <div class="row">
                 <div class="col-12 col-md-12 text-center" id="rendeles">
                     <?php
-                    include('szervercsatlakozas.php');
-                    include('rendeles.php');
+                    if(isset($_POST['rendelesleadas']) and isset($_POST['kosar'])){
+                        require_once('osztalyok.php');
+                        $kosar = $_POST['kosar'];
+                        $rendel = new Fiok();
+                        $rendel->accountRendeles($uname,$kosar);
+                    }
                     ?>
                 </div>
             </div>
