@@ -62,10 +62,11 @@
                 $sql = "UPDATE loginform SET helyreallitasi = '$generaltJelszo' WHERE Email = '$email'";
                 if (mysqli_query($csatlakozas, $sql)){
                     echo"<script>alert('Kövesse a linket, amelyet a $email email címre küldtünk.')</script>";
+                    $timestamp = time();
                     $emailtargy = "Jelszo Visszaallitas";
                     $emailtorzs = "<div style='text-align:center'>
                                     <h1>Jelszó visszaálltás</h1>
-                                    <h3>Kérjük <a href='http://ikt-project.rf.gd/webshop/jelszovaltoztat.php?generaltKod=$generaltJelszo'>változtassa meg jelszavát!</a></h3>
+                                    <h3>Kérjük <a href='http://ikt-project.rf.gd/webshop/jelszovaltoztat.php?generaltKod=$generaltJelszo&timestamp=$timestamp'>változtassa meg jelszavát!</a></h3>
                                     <h4>Üdvözlettel: Custom Cases</h4>
                                     </div>";
                     include('index.php');
@@ -93,9 +94,16 @@
                     }
                 }
                 else{
-                    $sql = "UPDATE loginform SET Pass = '$hasheltJelszo', helyreallitasi = '' WHERE Username = '$mibe'";
-                    if(mysqli_query($csatlakozas, $sql)){
-                        echo"<script>alert('Sikeres jelszóváltoztatás!');document.cookie='pword=$hasheltJelszo';document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
+                    $keresido=intval($_GET['timestamp']);
+                    $jelenlegiido = time();
+                    if($jelenlegiido - $keresido <= 3600){
+                        $sql = "UPDATE loginform SET Pass = '$hasheltJelszo', helyreallitasi = '' WHERE Username = '$mibe'";
+                        if(mysqli_query($csatlakozas, $sql)){
+                            echo"<script>alert('Sikeres jelszóváltoztatás!');document.cookie='pword=$hasheltJelszo';document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
+                        }
+                    }
+                    else{
+                        echo"<script>alert('A jelszóváltoztatási kérelem már lejárt!');</script>";
                     }
                 }
             }
@@ -201,10 +209,10 @@
                 }
                 else{
                     $sql = "INSERT INTO rendelesek (username, email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyz','$kosar','$kod', '0', 'Rendelés leadva')";
-                }
+                };
                 if(mysqli_query($csatlakozas,$sql)){
                     echo"<script>alert('Sikeres megrendelés!');</script>";
-                    $emailtargy = $kod . ' számú megrendelés';
+                    $emailtargy = $kod . ' szamu megrendeles';
                     $emailtorzs =  '<div style="text-align: center;">
                     <h1>Sikeres Megrendelés '. $nev . ' Számára!</h1<br>
                     <h2>A következő a rendelési azonosítója:' . $kod . '</h2><br>
