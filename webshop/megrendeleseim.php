@@ -93,19 +93,21 @@
                 ?>
             </tbody>
         </table>
+    </div>
         <hr class="my-4">
         <h2 class="mb-4">Lezárult rendeléseim</h2>
-        <table class="table table-dark table-hover table-striped">
-            <thead>
-                <tr>
-                    <th>Cím</th>
-                    <th>Rendelés</th>
-                    <th>Megjegyzés</th>
-                    <th>Állapot</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        <div class="table-responsive">
+            <table class="table table-dark table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Cím</th>
+                        <th>Rendelés</th>
+                        <th>Megjegyzés</th>
+                        <th>Állapot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                 if($auname == $uname and $apword == $pword){
                     $sql = "SELECT * FROM rendelesek WHERE username = '$uname' AND allapot = 'Rendelés lezárva'";
                     $mennyi = $csatlakozas->query($sql);
@@ -123,12 +125,12 @@
             </tbody>
         </table>
     </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script src="script.js"></script>
-<script>
-    if(window.history.replaceState) 
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script>
+        if(window.history.replaceState) 
     {
         window.history.replaceState(null, null, window.location.href);
     }

@@ -171,7 +171,7 @@
                                     $sql = "UPDATE accountAdatok SET email = '$aemail', nev = '$nev', telszam = '$telszam', orszag = '$orszag', megye = '$megye', varos = '$irszam', cim = '$cim', megjegyzes = '$megjegyzes', kerEmailt = '$kerEmailt' WHERE username = '$uname'";
                                 }
                                 else{
-                                    $sql = "INSERT INTO accountAdatok (username,email,nev,telszam,orszag,megye,varos,cim,megjegyzes,kerEmailt) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyzes','$kerEmailt')";
+                                    $sql = "INSERT INTO accountAdatok (username,email,nev,telszam,orszag,megye,varos,cim,megjegyzes,kerEmailt) VALUES ('$uname','$aemail','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyzes','$kerEmailt')";
                                 }
                                 if(mysqli_query($csatlakozas,$sql)){
                                     echo"<script>alert('Sikeres Változtatás! (kérjük frissítse a weboldalt)');</script>";
