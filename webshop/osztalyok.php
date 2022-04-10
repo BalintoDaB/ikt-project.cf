@@ -88,14 +88,14 @@
                     if($regipword = $hasheltRegi){
                         $sql = "UPDATE loginform SET Pass = '$hasheltJelszo', helyreallitasi = '' WHERE Username = '$mibe'";
                         if(mysqli_query($csatlakozas, $sql)){
-                            echo"<script>alert('Sikeres jelszóváltoztatás!');document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
+                            echo"<script>alert('Sikeres jelszóváltoztatás!');document.cookie='pword=$hasheltJelszo';document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
                         }
                     }
                 }
                 else{
                     $sql = "UPDATE loginform SET Pass = '$hasheltJelszo', helyreallitasi = '' WHERE Username = '$mibe'";
                     if(mysqli_query($csatlakozas, $sql)){
-                        echo"<script>alert('Sikeres jelszóváltoztatás!');document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
+                        echo"<script>alert('Sikeres jelszóváltoztatás!');document.cookie='pword=$hasheltJelszo';document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
                     }
                 }
             }
@@ -197,10 +197,10 @@
                 $kerEmailt = $sor['kerEmailt'];
                 $kod = rand(0, 9999999);
                 if($kerEmailt == 1){
-                    $sql = "INSERT INTO rendelesek (email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot) VALUES ('$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyz','$kosar','$kod', '1', 'Rendelés leadva')";
+                    $sql = "INSERT INTO rendelesek (username, email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyz','$kosar','$kod', '1', 'Rendelés leadva')";
                 }
                 else{
-                    $sql = "INSERT INTO rendelesek (email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot) VALUES ('$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyz','$kosar','$kod', '0', 'Rendelés leadva')";
+                    $sql = "INSERT INTO rendelesek (username, email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyz','$kosar','$kod', '0', 'Rendelés leadva')";
                 }
                 if(mysqli_query($csatlakozas,$sql)){
                     echo"<script>alert('Sikeres megrendelés!');</script>";

@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="../logo1.svg" type="image/x-icon">
         <script>
-            function createCookie(mibol){
-                document.cookie = "uname=" + mibol;
+            function createCookie(mit,mibol){
+                document.cookie = mit + "=" + mibol;
             }
             function getCookie(mit){
                 var cookieE = mit + "=";
@@ -39,8 +39,7 @@
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../rolunk.html">Rólunk</a></li>
                         <li class="nav-item"><a class="nav-link" href="allapot.php">Rendelés állapota</a></li>
                         <li class="nav-item"><a class="nav-link" href="webshop.php">Webshop</a></li>
                     </ul>
@@ -79,9 +78,10 @@
                                                 require_once('osztalyok.php');
                                                 $uname = $_POST['unamein'];
                                                 $pword = $_POST['pwordin'];
+                                                $pwordcookie = md5($pword);
                                                 $login = new Loginform();
                                                 if($login->loginEll($uname,$pword)){
-                                                    echo "<script>createCookie('$uname');document.location.href='webshop.php'</script>";
+                                                    echo "<script>createCookie('uname','$uname');createCookie('pword','$pwordcookie');document.location.href='webshop.php'</script>";
                                                 };
                                             };
                                             ?>

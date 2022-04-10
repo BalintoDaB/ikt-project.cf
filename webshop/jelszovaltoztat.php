@@ -20,9 +20,7 @@
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
-                        <li class="nav-item"><a class="nav-link" href="allapot.php">Rendelés állapota</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../rolunk.html">Rólunk</a></li>
                         <li class="nav-item"><a class="nav-link" href="webshop.php">Webshop</a></li>
                     </ul>
                 </div>
@@ -96,11 +94,11 @@
                                             $regijelszo='';
                                         }
                                         $ujjelszo = $_POST['ujpword'];
+                                        // if($cookieTorles){
+                                        //     echo"<script>document.cookie='uname=';document.cookie='pword='</script>";
+                                        // }
                                         $valt = new Loginform();
                                         $valt->jelszoValtoztat($username,$regijelszo,$ujjelszo,$milyen);
-                                        // if($cookieTorles){
-                                        //     echo"<script>document.cookie='uname=';</script>";
-                                        // }
                                     }
                                 ?>
                             </div>

@@ -22,23 +22,33 @@
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../rolunk.html">Rólunk</a></li>
                         <li class="nav-item"><?php
-                            if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != ''){
+                            if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != '' && isset($_COOKIE['pword']) && $_COOKIE['pword'] != ''){
+                                include('szervercsatlakozas.php');
                                 $uname = $_COOKIE['uname'];
-                                echo '
-                                  <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      Üdvözlet, ' . $uname . '
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
-                                    <li><a class="dropdown-item" href="adatok.php">Adatok</a></li>
-                                    <li><a class="dropdown-item" href="#" href="megrendeleseim.php">Megrendeléseim</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="kijelentkezes()">Kijelentkezés</a></li>
-                                    </ul>
-                                  </li>';
+                                $pword = $_COOKIE['pword'];
+                                $sql = "SELECT * FROM loginform WHERE username = '$uname'";
+                                $mennyi = $csatlakozas->query($sql);
+                                if ($mennyi->num_rows > 0){
+                                    $sor = $mennyi->fetch_assoc();
+                                    $auname = $sor['Username'];
+                                    $apword = $sor['Pass'];
+                                    if ($auname == $uname && $apword == $pword){
+                                        echo '
+                                          <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                              Üdvözlet, ' . $uname . '
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                            <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
+                                            <li><a class="dropdown-item" href="adatok.php">Adatok</a></li>
+                                            <li><a class="dropdown-item" href="megrendeleseim.php">Megrendeléseim</a></li>
+                                            <li><a class="dropdown-item" style="cursor:pointer;" onclick="kijelentkezes()">Kijelentkezés</a></li>
+                                            </ul>
+                                          </li>';
+                                    }
+                                }
                             }
                             else{
                                 echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';
@@ -94,10 +104,12 @@
             <input required type="hidden" name="kosar" id="kosarform">
             <div class="row justify-content-center"> 
                     <?php
-                        if(isset($_COOKIE['uname']) and $_COOKIE['uname'] != ''){
-                            echo '<div class="col-12 col-md-6">
-                            <input type="submit" name="rendelesleadas" class="btn mt-3 webshopgomb" value="Megrendelés mint ' . $uname . '">
-                            </div><div class="col-12 col-md-6"><input type="button" class="btn mt-3 webshopgomb" value="Felhasználóváltás" onclick="kijelentkezes();ugorj(' . "'login.php'" . ');"></div>';
+                        if(isset($_COOKIE['uname']) and $_COOKIE['uname'] != '' and isset($_COOKIE['pword']) and $_COOKIE['pword'] != ''){
+                            if($auname == $uname && $apword == $pword){
+                                echo '<div class="col-12 col-md-6">
+                                <input type="submit" name="rendelesleadas" class="btn mt-3 webshopgomb" value="Megrendelés mint ' . $uname . '">
+                                </div><div class="col-12 col-md-6"><input type="button" class="btn mt-3 webshopgomb" value="Felhasználóváltás" onclick="kijelentkezes();ugorj(' . "'login.php'" . ');"></div>';
+                            }
                         }
                         else{
                             echo"<div class='col-12 col-md-6'><input class='btn webshopgomb' type='button' value='Kérem jelentkezzen be!' onclick='ugorj(" . '"login.php"' . ")'></div>";

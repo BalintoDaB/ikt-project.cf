@@ -20,29 +20,42 @@
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../rolunk.html">Rólunk</a></li>
                         <li class="nav-item"><a class="nav-link" href="webshop.php">Webshop</a></li>
-                        <li class="nav-item"><a class="nav-link" href="allapot.php">Rendelés állapota</a></li>
                         <li class="nav-item"><?php
-                            if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != ''){
+                            include('szervercsatlakozas.php');
+                            if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != '' && isset($_COOKIE['pword']) && $_COOKIE['pword'] != ''){
                                 $uname = $_COOKIE['uname'];
-                                echo '
-                                <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Üdvözlet, ' . $uname . '
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
-                                <li><a class="dropdown-item" href="adatok.php">Adatok</a></li>
-                                <li><a class="dropdown-item" href="#" href="megrendeleseim.php">Megrendeléseim</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="kijelentkezes()">Kijelentkezés</a></li>
-                                </ul>
-                                  </li>';
+                                $pword = $_COOKIE['pword'];
+                                $sql = "SELECT * FROM loginform WHERE username = '$uname'";
+                                $mennyi = $csatlakozas->query($sql);
+                                if ($mennyi->num_rows > 0){
+                                    $sor = $mennyi->fetch_assoc();
+                                    $auname = $sor['Username'];
+                                    $apword = $sor['Pass'];
+                                    $aemail = $sor['Email'];
+                                    if ($auname == $uname && $apword == $pword){
+                                        echo '
+                                        <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Üdvözlet, ' . $uname . '
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
+                                        <li><a class="dropdown-item active" href="adatok.php">Adatok</a></li>
+                                        <li><a class="dropdown-item" href="megrendeleseim.php">Megrendeléseim</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="kijelentkezes()">Kijelentkezés</a></li>
+                                        </ul>
+                                        </li>';
+                                    };
                                 }
                                 else{
                                     echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';
                                 }
+                        }
+                        else{
+                            echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';
+                        }
                                 ?></li>
                     </ul>
                 </div>
@@ -69,13 +82,7 @@
             <form method="post">
                 <input required type="hidden" name="kosar" id="kosarform">
                 <div class="row mb-4">
-                    <div class="col-12 col-md-4">
-                        <div class="form-floating mb-3">
-                            <input required autocomplete="email" <?php echo'value=' . $adatok['email']?> name="email" type="email" class="form-control" id="emailin" placeholder="minta@gmail.com">
-                            <label for="emailin">Email Cím<span class="text-danger">*</span></label>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-8">
                         <div class="form-floating mb-3">
                             <input required autocomplete="name" <?php echo'value=' . preg_replace('/\s+/', '', $adatok['nev'])?> name="name" type="text" class="form-control" id="nevin" placeholder="Molnár Bálint">
                             <label for="nevin">Név<span class="text-danger">*</span></label>
@@ -140,14 +147,13 @@
                         <?php
                             if(isset($_POST['reset'])){
                                 include('szervercsatlakozas.php');
-                                $sql = "DELETE FROM accountAdatok WHERE username = '$uname'";
+                                $sql = "DELETE FROM accountAdatok WHERE username = '$uname' and pass = '$pword'";
                                 if(mysqli_query($csatlakozas,$sql)){
                                     echo"<script>alert('Sikeres Törlés! (kérjük frissítse a weboldalt)');</script>";
                                 }
                             }
                             if(isset($_POST['submit'])){
                                 include('szervercsatlakozas.php');
-                                $email = $_POST['email'];
                                 $nev = $_POST['name'];
                                 $telszam = $_POST['telszam'];
                                 $orszag = $_POST['orszag'];
@@ -155,9 +161,14 @@
                                 $irszam = $_POST['iranyitoszam'];
                                 $cim = $_POST['cim'];
                                 $megjegyzes = $_POST['megjegyzes'];
-                                $kerEmailt = $_POST['emailkergomb'];
+                                if(isset($_POST['emailkergomb'])){
+                                    $kerEmailt = true;
+                                }
+                                else{
+                                    $kerEmailt = false;
+                                }
                                 if($vane){
-                                    $sql = "UPDATE accountAdatok SET email = '$email', nev = '$nev', telszam = '$telszam', orszag = '$orszag', megye = '$megye', varos = '$irszam', cim = '$cim', megjegyzes = '$megjegyzes', kerEmailt = '$kerEmailt' WHERE username = '$uname'";
+                                    $sql = "UPDATE accountAdatok SET email = '$aemail', nev = '$nev', telszam = '$telszam', orszag = '$orszag', megye = '$megye', varos = '$irszam', cim = '$cim', megjegyzes = '$megjegyzes', kerEmailt = '$kerEmailt' WHERE username = '$uname'";
                                 }
                                 else{
                                     $sql = "INSERT INTO accountAdatok (username,email,nev,telszam,orszag,megye,varos,cim,megjegyzes,kerEmailt) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyzes','$kerEmailt')";

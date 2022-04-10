@@ -141,6 +141,7 @@ function loginToReg() {
 }
 function kijelentkezes() {
   document.cookie = "uname=";
+  document.cookie = "pword=";
   document.location.href = "http://ikt-project.rf.gd/webshop/webshop.php";
   alert("Sikeres kijelentkezés!");
 }
