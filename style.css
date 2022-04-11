@@ -139,6 +139,19 @@ section .text-container .text-box h3 {
   section .text-container {
     flex-direction: column;
   }
+  section img{
+    width: 75%;
+    height: 75%;
+  }
+}
+@media (max-width: 1200px){
+  section h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  section .text-container {
+    flex-direction: column;
+  }
 }
 
 .reveal {
@@ -177,8 +190,4 @@ section .text-box a:hover {
 }
 section .text-box a:hover path {
   fill: #ff6b08;
-}
-section .text-container .text-box:hover {
-  width: 120%;
-  height: 120%;
 }
