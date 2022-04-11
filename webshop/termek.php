@@ -41,6 +41,37 @@
                         <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
                         <li class="nav-item"><a class="nav-link" href="../rolunk.html">Rólunk</a></li>
                         <li class="nav-item"><a class="nav-link" href="webshop.php">Webshop</a></li>
+                        <li class="nav-item"><?php
+                            if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != '' && isset($_COOKIE['pword']) && $_COOKIE['pword'] != ''){
+                                include('szervercsatlakozas.php');
+                                $uname = $_COOKIE['uname'];
+                                $pword = $_COOKIE['pword'];
+                                $sql = "SELECT * FROM loginform WHERE username = '$uname'";
+                                $mennyi = $csatlakozas->query($sql);
+                                if ($mennyi->num_rows > 0){
+                                    $sor = $mennyi->fetch_assoc();
+                                    $auname = $sor['Username'];
+                                    $apword = $sor['Pass'];
+                                    if ($auname == $uname && $apword == $pword){
+                                        echo '
+                                          <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                              Üdvözlet, ' . $uname . '
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                            <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
+                                            <li><a class="dropdown-item" href="adatok.php">Adatok</a></li>
+                                            <li><a class="dropdown-item" href="megrendeleseim.php">Megrendeléseim</a></li>
+                                            <li><a class="dropdown-item" style="cursor:pointer;" onclick="kijelentkezes()">Kijelentkezés</a></li>
+                                            </ul>
+                                          </li>';
+                                    }
+                                }
+                            }
+                            else{
+                                echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';
+                            }
+                        ?></li>
                     </ul>
                 </div>
             </div>
@@ -63,39 +94,41 @@
         <div class="col-12 col-md-6 text-center">
             <h3>Termék értékelése</h3>
             <form method="post">
-                <div class="rate">
-                    <input type="radio" id="star5" name="rate5" value="5" />
-                    <label for="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4" name="rate4" value="4" />
-                    <label for="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3" name="rate3" value="3" />
-                    <label for="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2" name="rate2" value="2" />
-                    <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="rate1" value="1" />
-                    <label for="star1" title="text">1 star</label>
-                    <?php
-                        if(isset($_POST['ratinglead'])){                            
-                            include_once('osztalyok.php');
-                            include('szervercsatlakozas.php');
-                            $counter = 0;
-                            while(true){
-                                $counter++;
-                                $userrate = $_POST['rate' . $counter];
-                                if(isset($userrate)){
-                                    break;
+                <div class="row justify-content-center">
+                    <div class="col-12 mt-4 col-md-6 d-flex justify-content-center">
+                    <div class="rate">
+                            <input type="radio" id="star5" name="rate5" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rate4" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rate3" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rate2" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rate1" value="1" />
+                            <label for="star1" title="text">1 star</label>
+                            <?php
+                                if(isset($_POST['ratinglead'])){                            
+                                    include_once('osztalyok.php');
+                                    include('szervercsatlakozas.php');
+                                    $counter = 0;
+                                    while(true){
+                                        $counter++;
+                                        $userrate = $_POST['rate' . $counter];
+                                        if(isset($userrate)){
+                                            break;
+                                        }
+                                    };
+                                    $ratel = new Rating();
+                                    if($ratel->rateAdd($termeknev,intval($userrate))){
+                                        echo"<script>alert('Sikeres értékelés!')</script>";
+                                        header("Refresh:0");
+                                    };
                                 }
-                            };
-                            $ratel = new Rating();
-                            if($ratel->rateAdd($termeknev,intval($userrate))){
-                                echo"<script>alert('Sikeres értékelés!')</script>";
-                                header("Refresh:0");
-                            };
-                        }
-                    ?>
+                            ?>
+                    </div>
                 </div>
-                <div class="row mt-4">
-                    <div class="col-12 col-md-12">
+                    <div class="col-12 mt-4 col-md-6">
                         <input type="submit" class="btn webshopgomb" value="Értékelés" name="ratinglead">
                     </div>
                 </div>
@@ -103,34 +136,38 @@
         </div>
         <div class="col-12 col-md-6 text-center">
             <h3>Comment írás</h3>
-            <form action="post">
-                <div class="row mt-4">
-                    <div class="col-12 col-md-6">
-                        <div class="form-floating mb-3">
-                            <input type="text" name="nevin" class="form-control" id="nevin" placeholder="Molnár Bálint">
-                            <label for="nevin">Név</label>
+            <?php 
+                require_once('osztalyok.php');
+                include('szervercsatlakozas.php');
+                $loginell = new Loginform();
+                if($loginell->loginMegnez()){
+                    echo'            <form action="post">
+                    <div class="row mt-4">
+                        <div class="col-12 col-md-12">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="nevin" class="form-control" id="nevin" placeholder="Molnár Bálint">
+                                <label for="nevin">Név</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <div class="form-floating mb-3">
-                            <input type="text" name="kodin" class="form-control" id="kodin" placeholder="325235">
-                            <label for="kodin">Rendelést azonosító kód</label>
+                    <div class="row">
+                        <div class="col-12 col-md-12">
+                            <div class="mb-3">
+                                <textarea class="form-control" name="commentin" placeholder="Komment" id="commenttextarea"></textarea>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-12">
-                        <div class="mb-3">
-                            <textarea class="form-control" name="commentin" placeholder="Komment" id="commenttextarea"></textarea>
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-4">
+                            <input type="submit" class="btn webshopgomb" value="Közzététel" name="ratinglead">
                         </div>
                     </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-4">
-                        <input type="submit" class="btn webshopgomb" value="Közzététel" name="ratinglead">
-                    </div>
-                </div>
-            </form>
+                </form>';
+                }
+                else{
+                    // itt még kell egy login gomb
+                }
+            ?>
         </div>
     </div>
     </div>
