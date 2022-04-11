@@ -119,3 +119,13 @@ table tr:last-of-type td{
 .lathatatlan{
     display: none;
 }
+.webshopcard{
+    transition: .5s;
+}
+.webshopcard:hover{
+    transform: scale(1.1);
+    transition: .5s;
+}
+a{
+    text-decoration: none;
+}

@@ -24,38 +24,27 @@
                     <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
                     <li class="nav-item"><a class="nav-link" href="webshop.php">Webshop</a></li>
                     <li class="nav-item"><?php
-                        include('szervercsatlakozas.php');
-                        if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != '' && isset($_COOKIE['pword']) && $_COOKIE['pword'] != ''){
+                        require_once('osztalyok.php');
+                        $loginell = new Loginform();
+                        if($loginell->loginMegnez()){
                             $uname = $_COOKIE['uname'];
                             $pword = $_COOKIE['pword'];
-                            $sql = "SELECT * FROM loginform WHERE username = '$uname'";
-                            $mennyi = $csatlakozas->query($sql);
-                            if ($mennyi->num_rows > 0){
-                                $sor = $mennyi->fetch_assoc();
-                                $auname = $sor['Username'];
-                                $apword = $sor['Pass'];
-                                if ($auname == $uname && $apword == $pword){
-                                    echo '
-                                    <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Üdvözlet, ' . $uname . '
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
-                                    <li><a class="dropdown-item" href="adatok.php">Adatok</a></li>
-                                    <li><a class="dropdown-item active" href="megrendeleseim.php">Megrendeléseim</a></li>
-                                    <li><a class="dropdown-item" style="cursot:pointer;" onclick="kijelentkezes()">Kijelentkezés</a></li>
-                                    </ul>
-                                    </li>';
-                                };
-                            }
-                            else{
-                                echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';
-                            }
-                    }
-                    else{
-                        echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';
-                    }
+                            echo '
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Üdvözlet, ' . $uname . '
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="jelszovaltoztat.php">Jelszó változtatás</a></li>
+                            <li><a class="dropdown-item" href="adatok.php">Adatok</a></li>
+                            <li><a class="dropdown-item active" href="megrendeleseim.php">Megrendeléseim</a></li>
+                            <li><a class="dropdown-item" style="cursot:pointer;" onclick="kijelentkezes()">Kijelentkezés</a></li>
+                            </ul>
+                            </li>';
+                        }
+                        else{
+                            echo'<a href="login.php" class="nav-link">Bejelentkezés</a>';
+                        }
                             ?></li>
                 </ul>
             </div>
@@ -77,7 +66,8 @@
             </thead>
             <tbody>
                 <?php
-                if($auname == $uname and $apword == $pword){
+                if($loginell->loginMegnez()){
+                    include('szervercsatlakozas.php');
                     $sql = "SELECT * FROM rendelesek WHERE username = '$uname' AND allapot <> 'Rendelés lezárva'";
                     $mennyi = $csatlakozas->query($sql);
                     if ($mennyi->num_rows > 0){
@@ -108,7 +98,8 @@
                 </thead>
                 <tbody>
                     <?php
-                if($auname == $uname and $apword == $pword){
+                if($loginell->loginMegnez()){
+                    include('szervercsatlakozas.php');
                     $sql = "SELECT * FROM rendelesek WHERE username = '$uname' AND allapot = 'Rendelés lezárva'";
                     $mennyi = $csatlakozas->query($sql);
                     if ($mennyi->num_rows > 0){

@@ -108,6 +108,26 @@
                 }
             }
         }
+        function loginMegnez(){
+            include('szervercsatlakozas.php');
+            if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != '' && isset($_COOKIE['pword']) && $_COOKIE['pword'] != ''){
+                $uname = $_COOKIE['uname'];
+                $pword = $_COOKIE['pword'];
+                $sql = "SELECT * FROM loginform WHERE username = '$uname'";
+                $mennyi = $csatlakozas->query($sql);
+                if ($mennyi->num_rows > 0){
+                    $sor = $mennyi->fetch_assoc();
+                    $auname = $sor['Username'];
+                    $apword = $sor['Pass'];
+                    if ($auname == $uname && $apword == $pword){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+            }
+        }
     };
     class Rating{
         function rateAdd($ad, $mennyitad){
