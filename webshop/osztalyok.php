@@ -244,5 +244,59 @@
                 }
             }
         }
+        function vasarlasCheck($username, $termek){
+            include('szervercsatlakozas.php');
+            $sql = "SELECT * FROM rendelesek WHERE username = '$username'";
+            $mennyi = $csatlakozas->query($sql);
+            if ($mennyi->num_rows > 0){
+                while($sor = $mennyi->fetch_assoc()){
+                    if(strstr($sor['rendeltek'],$termek)){
+                        return true;
+                    }
+                }
+            }
+            else{
+                return false;
+            }
+        }
+        function kommenteles($username,$termek,$commentheader, $comment){
+            include('szervercsatlakozas.php');
+            $datum = date('Y-m-d');
+            $hiteles = $this->vasarlasCheck($username,$termek);
+            $sql = "INSERT INTO commentek (username,termek,commentcim,comment,datum,hiteles) VALUES ('$username','$termek','$commentheader','$comment','$datum','$hiteles')";
+            if(mysqli_query($csatlakozas,$sql)){
+                return "<script>alert('Sikeres kommentelés!')</script>";
+            }
+        }
+        function kommentKiir($termek){
+            include('szervercsatlakozas.php');
+            $sql = "SELECT * FROM commentek WHERE termek = '$termek'";
+            $mennyi = $csatlakozas->query($sql);
+            if ($mennyi->num_rows > 0){
+                while($sor = $mennyi->fetch_assoc()){
+                    echo'<div class="row mt-3 justify-content-center">
+                    <div class="col-12 col-md-10">
+                        <div class="card rounded">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 col-md-12">
+                                        <h3 class="d-inline">' . $sor['username'] . '</h3><h5 class="d-inline hiteles text-dark opacity-75">' . $hitelesseg . '</h5><h6 class="float-end text-dark opacity-75">' . $_POST['datum'] . '</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h4 class="mt-2">' . $sor['commentcim'] . '</h4>
+                                    <div class="col-12 col-md-12">
+                                        <div class="card-text p-2">
+                                        ' . $sor['comment'] . '
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+                }
+            }
+        }
     }
 ?>

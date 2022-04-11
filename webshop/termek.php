@@ -141,12 +141,12 @@
                 include('szervercsatlakozas.php');
                 $loginell = new Loginform();
                 if($loginell->loginMegnez()){
-                    echo'            <form action="post">
+                    echo'            <form method="post">
                     <div class="row mt-4">
                         <div class="col-12 col-md-12">
                             <div class="form-floating mb-3">
-                                <input type="text" name="nevin" class="form-control" id="nevin" placeholder="Molnár Bálint">
-                                <label for="nevin">Név</label>
+                                <input type="text" name="commentheaderin" class="form-control" id="commentheaderin" placeholder="Molnár Bálint">
+                                <label for="nevin">Komment fejléc</label>
                             </div>
                         </div>
                     </div>
@@ -159,17 +159,40 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-4">
-                            <input type="submit" class="btn webshopgomb" value="Közzététel" name="ratinglead">
+                            <input type="submit" class="btn webshopgomb" value="Közzététel" name="commentlead">
                         </div>
                     </div>
                 </form>';
                 }
                 else{
-                    // itt még kell egy login gomb
+                    echo"<form method='post'>
+                            <div class='row mt-4 justify-content-center'>
+                                <div class='col-12 col-md-4'>
+                                <input class='btn webshopgomb' type='button' value='Kérem jelentkezzen be!' onclick='ugorj(" . '"login.php"' . ")'>
+                                </div>
+                            </div>
+                        </form>
+                        ";
+                }
+            ?><?php 
+                if(isset($_POST['commentlead'])){
+                    require_once('osztalyok.php');
+                    $fiok = new Fiok();
+                    $commentheader = $_POST['commentheaderin'];
+                    $comment = $_POST['commentin'];
+                    $eredmeny = $fiok->kommenteles($uname,$termek,$commentheader,$comment);
+                    echo $eredmeny;
                 }
             ?>
         </div>
     </div>
+    <hr class="my-4">
+    <?php 
+        require_once('osztalyok.php');
+        include('szervercsatlakozas.php');
+        $fiok = new Fiok();
+        $fiok->kommentKiir($termek);
+    ?>
     </div>
     <script>
         if(window.history.replaceState) 

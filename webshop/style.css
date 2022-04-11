@@ -129,3 +129,12 @@ table tr:last-of-type td{
 a{
     text-decoration: none;
 }
+.hiteles{
+    margin-left: 2.5vw;
+}
+h6{
+    margin: 0!important;
+}
+.card{
+    border-radius: 10px!important;
+}
