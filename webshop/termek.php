@@ -121,8 +121,7 @@
                                     };
                                     $ratel = new Rating();
                                     if($ratel->rateAdd($termeknev,intval($userrate))){
-                                        echo"<script>alert('Sikeres értékelés!')</script>";
-                                        header("Refresh:0");
+                                        echo"<script>alert('Sikeres értékelés, kérjük frissítse a weboldalt!');</script>";
                                     };
                                 }
                             ?>
