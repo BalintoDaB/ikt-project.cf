@@ -110,7 +110,7 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="form-floating mb-3">
-                            <input required autocomplete="postal-code" <?php echo'value=' . $adatok['irszam']?> name="iranyitoszam" type="text" class="form-control" id="iranyin" placeholder="9200">
+                            <input required autocomplete="postal-code" onchange="irszamKeres(document.getElementById('iranyin').value)" <?php echo'value=' . $adatok['irszam']?> name="iranyitoszam" type="number" class="form-control" id="iranyin" placeholder="9200">
                             <label for="iranyin">Irányítószám<span class="text-danger">*</span></label>
                         </div>
                     </div>

@@ -149,3 +149,19 @@ function loginToReset(){
     $('#loginbox').css('display','none');
     $('#resetbox').removeClass('d-none');
 }
+function irszamKeres(irszam){
+  $.ajax({
+    type: "GET",
+    url: "irszamok.json",
+    data: "",
+    dataType: "JSON",
+    success: function(data) {
+      var tomb = data.Települések;
+      tomb.forEach(element => {
+        if(element.IRSZ == irszam){
+          $('body').html(element.Település);
+        }
+      });
+    }
+  });
+}
