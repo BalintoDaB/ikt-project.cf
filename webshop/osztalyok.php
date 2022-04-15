@@ -2,15 +2,28 @@
     class Loginform{
         public $eredmeny = '';
         function loginEll($uname, $pword){
-            include('szervercsatlakozas.php');
-            $hasheltJelszo = md5($pword);
-            $sql = "SELECT * FROM loginform WHERE Username = '$uname' AND Pass = '$hasheltJelszo'";
-            $mennyi = $csatlakozas->query($sql);
-            if ($mennyi->num_rows > 0){
-                return True;
-            }
-            else{
-                return False;
+            // include('szervercsatlakozas.php');
+            $cucc = "SELECT * FROM loginform WHERE Username='$uname'";
+            $cucc2 = mysqli_query($csatlakozas, $cucc);
+            if($cucc2 == false){
+                echo "<script>alert('Bejelentkezés előtt kérjük kövesse az emialjára küldött linket');</script>";
+                $emailtargy = "Jelszo Visszaallitas";
+                $emailtorzs = "<div style='text-align:center'>
+                                    <h1>Account Verificatió</h1>
+                                    <h3>Kérjük <a href='http://ikt-project.rf.gd/webshop/verify.php?accnev=$uname'>Verifikálja Accountját</a></h3>
+                                    <h4>Üdvözlettel: Custom Cases</h4>
+                                    </div>";
+                include('index.php');
+            }else{
+                $hasheltJelszo = md5($pword);
+                $sql = "SELECT * FROM loginform WHERE Username = '$uname' AND Pass = '$hasheltJelszo'";
+                $mennyi = $csatlakozas->query($sql);
+                if ($mennyi->num_rows > 0){
+                    return True;
+                }
+                else{
+                    return False;
+                }
             }
         }
         function getRandomString($n) {
