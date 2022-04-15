@@ -2,12 +2,14 @@
     class Loginform{
         public $eredmeny = '';
         function loginEll($uname, $pword){
-            // include('szervercsatlakozas.php');
-            $cucc = "SELECT * FROM loginform WHERE Username='$uname'";
+            include('szervercsatlakozas.php');
+            $cucc = "SELECT 'IsVerified' FROM loginform WHERE Username='$uname'";
             $cucc2 = mysqli_query($csatlakozas, $cucc);
-            if($cucc2 == false){
+            if($cucc2== true){
                 echo "<script>alert('Bejelentkezés előtt kérjük kövesse az emialjára küldött linket');</script>";
-                $emailtargy = "Jelszo Visszaallitas";
+                $sql = "SELECT 'Email' FROM loginform WHERE Username='$uname'";
+                $email = mysqli_query($csatlakozas, $sql);
+                $emailtargy = "Accont Verifikáció";
                 $emailtorzs = "<div style='text-align:center'>
                                     <h1>Account Verificatió</h1>
                                     <h3>Kérjük <a href='http://ikt-project.rf.gd/webshop/verify.php?accnev=$uname'>Verifikálja Accountját</a></h3>
