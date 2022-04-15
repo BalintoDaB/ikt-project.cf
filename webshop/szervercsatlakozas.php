@@ -1,8 +1,13 @@
  <?php
-    $szervernev = "sql201.epizy.com";
-    $felhasznalonev = "epiz_31348482";
-    $jelszo = "ITrcq8cg3L3";
-    $adatbazisnev = "epiz_31348482_webshop";
+    // $szervernev = "sql201.epizy.com";
+    // $felhasznalonev = "epiz_31348482";
+    // $jelszo = "ITrcq8cg3L3";
+    // $adatbazisnev = "epiz_31348482_webshop";
+
+    $szervernev = "sql11.freemysqlhosting.net";
+    $felhasznalonev = "sql11486028";
+    $jelszo = "4ebFQKEZ9c";
+    $adatbazisnev = "sql11486028";
 
     // $szervernev = "localhost";
     // $felhasznalonev = "root";
