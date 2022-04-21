@@ -49,7 +49,7 @@ function kosarbatetel(nev, ar) {
         "','" +
         ar +
         "'" +
-        ')" max="10" min="1" value="1"></td><td id="' +
+        ')" max="25" min="1" value="1"></td><td id="' +
         cutoltNev +
         'artd">' +
         ar +

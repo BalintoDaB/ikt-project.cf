@@ -85,14 +85,6 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    if(isset($_GET['eredetitermek']) && isset($_GET['eredetiar'])){
-                        $termek = $_GET['eredetitermek'];
-                        $termekbe = '"' . $termek . '"';
-                        $ar = $_GET['eredetiar'];
-                        echo "<script>kosarbatetel($termekbe, $ar);</script>";
-                    }
-                ?>
             </tbody>
         </table>
         <hr class="my-4">
@@ -132,6 +124,14 @@
             </div>
         </div>
     </div>
+    <?php
+        if(isset($_GET['eredetitermek']) && isset($_GET['eredetiar'])){
+            $termek = $_GET['eredetitermek'];
+            $termekbe = '"' . $termek . '"';
+            $ar = $_GET['eredetiar'];
+            echo "<script>kosarbatetel($termekbe, $ar);</script>";
+        }
+    ?>
     <script src="title-scroll.js" data-start="5000" data-speed="250"></script>
     <script>
         if(window.history.replaceState) 
