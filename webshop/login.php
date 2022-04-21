@@ -82,7 +82,13 @@
                                                 $login = new Loginform();
                                                 if($login->loginEll($uname,$pword)){
                                                     echo "<script>createCookie('uname','$uname');createCookie('pword','$pwordcookie');document.location.href='webshop.php'</script>";
-                                                };
+                                                }
+                                                else if($login->eredmeny == "verifKell"){
+                                                    echo "<script>alert('Kérjük, erősítse meg a profilját!')</script>";
+                                                }
+                                                else{
+                                                    echo "<script>alert('Valami hibás!')</script>";
+                                                }
                                             };
                                             ?>
                                     </div>
@@ -144,7 +150,7 @@
                                                 $emailtargy = "Koszonjuk regisztraciojat, $username!";
                                                 $emailtorzs = "<div style='text-align:center'>
                                                                     <h1>Kedves $username, a Custom Cases üdvözli önt!</h1>
-                                                                    <h3>Látogasson el <a href='http://ikt-project.rf.gd/webshop/webshop.php'>webshopunkba</a>, és vásárolja következő PC házát nálunk!</h3>
+                                                                    <h3>Ahhoz hogy érvényes legyen a regisztrációja, kérjük kattintson <a href='http://ikt-project.rf.gd/webshop/verify.php?account=$username'>ide</a></h3>
                                                                     <h4>Üdvözlettel: <a href='http://ikt-project.rf.gd'>Custom Cases</a></h4>
                                                                 </div>";
                                                 include_once('index.php');
