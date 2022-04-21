@@ -3,29 +3,21 @@
         public $eredmeny = '';
         function loginEll($uname, $pword){
             include('szervercsatlakozas.php');
-            $cucc = "SELECT 'IsVerified' FROM loginform WHERE Username='$uname'";
-            $cucc2 = mysqli_query($csatlakozas, $cucc);
-            if($cucc2== true){
-                echo "<script>alert('Bejelentkezés előtt kérjük kövesse az emialjára küldött linket');</script>";
-                $sql = "SELECT 'Email' FROM loginform WHERE Username='$uname'";
-                $email = mysqli_query($csatlakozas, $sql);
-                $emailtargy = "Accont Verifikáció";
-                $emailtorzs = "<div style='text-align:center'>
-                                    <h1>Account Verificatió</h1>
-                                    <h3>Kérjük <a href='http://ikt-project.rf.gd/webshop/verify.php?accnev=$uname'>Verifikálja Accountját</a></h3>
-                                    <h4>Üdvözlettel: Custom Cases</h4>
-                                    </div>";
-                include('index.php');
-            }else{
-                $hasheltJelszo = md5($pword);
-                $sql = "SELECT * FROM loginform WHERE Username = '$uname' AND Pass = '$hasheltJelszo'";
-                $mennyi = $csatlakozas->query($sql);
-                if ($mennyi->num_rows > 0){
-                    return True;
+            $hasheltJelszo = md5($pword);
+            $sql = "SELECT * FROM loginform WHERE Username = '$uname' AND Pass = '$hasheltJelszo'";
+            $mennyi = $csatlakozas->query($sql);
+            if ($mennyi->num_rows > 0){
+                $sor = $mennyi->fetch_assoc();
+                if($sor['ellenorzotte']){
+                    return true;
                 }
                 else{
-                    return False;
+                    $this->eredmeny = "verifKell";
+                    return false;
                 }
+            }
+            else{
+                return false;
             }
         }
         function getRandomString($n) {
@@ -53,7 +45,7 @@
                         $hasheltJelszo = md5($pword);
                         $sql = "INSERT INTO loginform (Username, Email, Pass) VALUES ('$uname','$regemail','$hasheltJelszo')";
                         mysqli_query($csatlakozas, $sql);
-                        echo '<script>alert("Sikeres regisztráció, ' . $uname . '!")</script>';
+                        echo '<script>alert("Sikeres regisztráció, ' . $uname . '!\n Legyen szíves megerősíteni a regisztrációját!")</script>';
                         return "sikeres";
                     }
                     catch(PDOException $e)
