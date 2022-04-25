@@ -64,6 +64,7 @@ body {
     rgba(0, 0, 0, 1) 100%
   ); */
   background-color: #302f2f;
+  overflow-x: hidden;
 }
 .rating span {
   position: relative;
@@ -190,4 +191,34 @@ section .text-box a:hover {
 }
 section .text-box a:hover path {
   fill: #ff6b08;
+}
+#main-div{
+  height: 100vh;
+}
+#main-body{
+  background-image: url("./img/bg-main.jpg");
+}
+.grad-purp {
+  background: linear-gradient(to right, #8400ff, #9008ff, #cf23cf, #ff00ff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-shadow: 0px 15px 5px rgba(0, 0, 0, 0.1),
+    10px 20px 5px rgba(0, 0, 0, 0.05), -10px 20px 5px rgba(0, 0, 0, 0.05);
+}
+#second-div{
+  /* height: 100vh; */
+  background-color: whitesmoke;
+}
+.b-shadow{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.b-shadow:hover{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+#second-div svg{
+  /* height: 100vh; */
+  text-align: center;
+}
+.d-trans{
+  transition: 1s;
 }
