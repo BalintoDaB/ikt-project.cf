@@ -285,9 +285,14 @@
             if ($mennyi->num_rows > 0){
                 while($sor = $mennyi->fetch_assoc()){
                     if($sor['hiteles'] == true){
-                        $hitelesseg = "Igazolt vásárló";
+                        $hitelesLogo = '<svg style="margin-bottom:4px;margin-left:3px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                        <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                        <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                        </svg>';
+                        $hitelesseg = 'Igazolt vásárló';
                     }
                     else{
+                        $hitelesLogo = "";
                         $hitelesseg = "Nem igazolt vásárló!";
                     }
                     echo'<div class="row mt-3 justify-content-center">
@@ -296,7 +301,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 col-md-12">
-                                        <h3 class="d-inline">' . $sor['username'] . '</h3><h5 class="d-inline hiteles text-dark opacity-75">' . $hitelesseg . '</h5><h6 class="float-end text-dark opacity-75">' . $sor['datum'] . '</h6>
+                                        <h3 class="d-inline">' . $sor['username'] . '</h3><h5 class="d-inline hiteles text-dark opacity-75">' . $hitelesseg . '</h5>' . $hitelesLogo  . '<h6 class="float-end text-dark opacity-75">' . $sor['datum'] . '</h6>
                                     </div>
                                 </div>
                                 <div class="row">

@@ -165,8 +165,8 @@
                 }
                 else{
                     echo"<form method='post'>
-                            <div class='row mt-4 justify-content-center'>
-                                <div class='col-12 col-md-4'>
+                            <div class='row justify-content-center'>
+                                <div class='col-12 col-md-6 mt-4'>
                                 <input class='btn webshopgomb' type='button' value='Kérem jelentkezzen be!' onclick='ugorj(" . '"login.php"' . ")'>
                                 </div>
                             </div>
