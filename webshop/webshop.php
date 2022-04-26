@@ -86,7 +86,45 @@
             </thead>
             <tbody>
             </tbody>
+            <!-- <tfoot>
+                <tr class="mt-4">
+                    <td id="vegosszeg" colspan="2">Még nincs semmi a kosaradban!</td>
+                    <td>
+                        <input type="text" name="kuponbe" placeholder="Kuponkód beírás(Ha van)" id="kuponbe">
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+            </tfoot> -->
         </table>
+        <div class="row">
+            <div class="col-12 col-md-6 p-3">
+                <h3>
+                    A következő a végösszeg:
+                    <span id="vegosszeg">
+                        0
+                        </span>
+                </h3>
+            </div>
+            <div class="col-12 col-md-6 p-3">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" oninput="kuponCheck()" name="kuponin" id="kuponin" placeholder="asd">
+                            <label for="kuponin">Kuponkód</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <h2 id="kuponout">
+                            Nincs ilyen kuponkód!
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
         <hr class="my-4">
         <div class="text-center">
             <h1 class="mb-4">
@@ -94,6 +132,7 @@
             </h1>
             <form method="post">
             <input required type="hidden" name="kosar" id="kosarform">
+            <input required type="hidden" name="kosarkedvezmeny" id="kosarkedvezmeny">
             <div class="row justify-content-center"> 
                     <?php
                         if(isset($_COOKIE['uname']) and $_COOKIE['uname'] != '' and isset($_COOKIE['pword']) and $_COOKIE['pword'] != ''){

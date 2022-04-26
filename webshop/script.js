@@ -24,6 +24,9 @@ function kosarbatetel(nev, ar) {
       artd = $("#" + micsoda + "artd");
       var eredetiar = parseInt(ar);
       var ujar = eredetiar * eredeti;
+      var asd = eredeti-1;
+      elozoAr -= eredetiar * asd;
+      vegosszegValt(ujar);
       artd.html(ujar.toString() + " Ft");
       eredeti += 1;
       var index = eddigiKosarban.findIndex((element) => {
@@ -36,6 +39,7 @@ function kosarbatetel(nev, ar) {
     }
   } else {
     var beilleszt = "'#" + cutoltNev + "'";
+    vegosszegValt(ar);
     $("#kosartable tbody").append(
       '<tr class="align-middle" id="' +
         cutoltNev +
@@ -77,6 +81,9 @@ function szamValt(micsoda, ar) {
     artd = $("#" + micsoda + "artd");
     var eredetiar = parseInt(ar);
     var ujar = eredetiar * eredeti;
+    var asd = eredeti-1;
+    elozoAr -= eredetiar * asd;
+    vegosszegValt(ujar);
     artd.html(ujar.toString() + " Ft");
     eredeti += 1;
     var index = eddigiKosarban.findIndex((element) => {
@@ -165,3 +172,42 @@ function irszamKeres(irszam){
     }
   });
 }
+var kuponkedvezmeny;
+var kuponjson = [];
+$(document).ready(function () {            
+    $.ajax({
+        type: "GET",
+        url: "kuponok.json",
+        data: "",
+        dataType: "JSON",
+        success: function(data) {
+            kuponjson = data.kuponok;
+            for(let i of kuponjson){
+                if(i.érvényesség < Date.now() / 1000){
+                    var removeIndex = kuponjson.indexOf(i);
+                    kuponjson.splice(removeIndex, 1);
+                }
+            }
+        }
+    });
+});
+function kuponCheck(){
+  var input = document.getElementById('kuponin');
+  var output = document.getElementById('kuponout');
+  for (let i of kuponjson) {
+      if(input.value == i.kod){
+          kuponkedvezmeny = i.kedvezmény;
+          output.innerHTML = "A követkzeő a kedvezményed: " + i.kedvezmény + "%";
+          break;
+      }
+      else{
+          output.innerHTML = 'Nincs ilyen kupon!';
+      }
+  }
+}
+function vegosszegValt(ar){
+  var output = document.getElementById('vegosszeg');
+  elozoAr += ar;
+  output.innerHTML = elozoAr;
+}
+var elozoAr=0;
