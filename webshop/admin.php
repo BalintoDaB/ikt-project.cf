@@ -116,6 +116,61 @@
         include('ratingadd.php')
     ?>
     <hr>
+    <form method="post">
+        <table>
+            <tr>
+                <th>
+                    Kuponkód
+                </th>
+                <th>
+                    Lejárat
+                </th>
+                <th>
+                    Kedvezmény
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="kodin">
+                </td>
+                <td>
+                    <input type="date" name="datein">
+                </td>
+                <td>
+                    <input type="number" name="kedvezmenyin" style="width: auto;" min="1" max="100">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="submit" name="kuponadd" value="Hozzáadás">
+                </td>
+            </tr>
+        </table>
+        <?php
+            if(isset($_POST['kuponadd'])){
+                $kod = $_POST['kodin'];
+                $date = strtotime($_POST['datein']);
+                $kedvezmeny = $_POST['kedvezmenyin'];
+                $kuponjson1 = file_get_contents('kuponok.json');
+                $jsonTomb = json_decode($kuponjson1,true);
+                // $jsontomb2 = $jsonTomb['kuponok'];
+                // foreach ($jsontomb2 as $jsontom) {
+                    //     print $jsontom['kod'];
+                    // }
+                    
+                $kuponjson = fopen('kuponok.json', 'w');
+                $beilllesztendotomb = array(
+                    "kod" => $kod,
+                    "ervenyesseg" => $date,
+                    "kedvezmeny" => $kedvezmeny
+                );
+                array_push($jsonTomb,$beilllesztendotomb);
+                $beillesztendo = json_encode($jsonTomb);
+                fwrite($kuponjson, $beillesztendo);
+                fclose($kuponjson);
+            }
+        ?>
+    </form>
     <script>
     if(window.history.replaceState) 
     {
