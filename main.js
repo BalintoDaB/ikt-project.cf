@@ -1,6 +1,9 @@
 var ActivPic;
 var ActivBuy;
 var magassag;
+var canChange = false;
+const Delay = async (ms = 1000) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 
 var intervalId = window.setInterval(function () {
   GetSlide();
@@ -120,3 +123,23 @@ function ugorj(hova) {
 //   }
 // }
 // window.addEventListener("scroll", reveal);
+async function eneble() {
+  var cuccok = document.getElementsByClassName("smal-circ");
+  for (let i = 0; i < cuccok.length; ) {
+    cuccok[i].style.display = "block";
+    i++;
+    await Delay(100);
+  }
+  await Delay(1000);
+  canChange = true;
+}
+async function diseble() {
+  var cuccok = document.getElementsByClassName("smal-circ");
+  if (canChange) {
+    for (let i = 0; i < cuccok.length; ) {
+      cuccok[i].style.display = "none";
+      i++;
+      await Delay(100);
+    }
+  }
+}
