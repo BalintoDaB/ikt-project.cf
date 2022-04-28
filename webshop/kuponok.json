@@ -1,0 +1,80 @@
+{
+    "kuponok":
+    [
+        {
+            "kod":"asdasd",
+            "érvényesség": 1650919999,
+            "kedvezmény": 25
+        },
+        {
+            "kod":"fas",
+            "érvényesség": 99999999999,
+            "kedvezmény": 10
+        },
+        {
+            "kod":"torok",
+            "érvényesség": 99999999999,
+            "kedvezmény": 21
+        },
+        {
+            "kod":"asd",
+            "érvényesség": 99999999999,
+            "kedvezmény": 21
+        },
+        {
+            "kod":"geg",
+            "érvényesség": 99999999999,
+            "kedvezmény": 9
+        },
+        {
+            "kod":"asjsa",
+            "érvényesség": 99999999999,
+            "kedvezmény": 7
+        },
+        {
+            "kod":"milan",
+            "érvényesség": 99999999999,
+            "kedvezmény": 8
+        },
+        {
+            "kod":"fff",
+            "érvényesség": 99999999999,
+            "kedvezmény": 7
+        },
+        {
+            "kod":"feresssc",
+            "érvényesség": 99999999999,
+            "kedvezmény": 6
+        },
+        {
+            "kod":"ferasfafec",
+            "érvényesség": 99999999999,
+            "kedvezmény": 5
+        },
+        {
+            "kod":"fasfaerec",
+            "érvényesség": 99999999999,
+            "kedvezmény": 82
+        },
+        {
+            "kod":"fereaffdc",
+            "érvényesség": 99999999999,
+            "kedvezmény": 34
+        },
+        {
+            "kod":"asdasd",
+            "érvényesség": 99999999999,
+            "kedvezmény": 86
+        },
+        {
+            "kod":"fervvvec",
+            "érvényesség": 99999999999,
+            "kedvezmény": 15
+        },
+        {
+            "kod":"vvv",
+            "érvényesség": 99999999999,
+            "kedvezmény": 100
+        }
+    ]
+}

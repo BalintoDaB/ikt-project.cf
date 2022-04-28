@@ -230,11 +230,12 @@
                 $megjegyzes = $sor['megjegyzes'];
                 $kerEmailt = $sor['kerEmailt'];
                 $kod = rand(0, 9999999);
+                $ar = $_POST['ar'];
                 if($kerEmailt == 1){
-                    $sql = "INSERT INTO rendelesek (username, email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyzes','$kosar','$kod', '1', 'Rendelés leadva')";
+                    $sql = "INSERT INTO rendelesek (username, email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot, fizetendo) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyzes','$kosar','$kod', '1', 'Rendelés leadva',$ar)";
                 }
                 else{
-                    $sql = "INSERT INTO rendelesek (username, email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyzes','$kosar','$kod', '0', 'Rendelés leadva')";
+                    $sql = "INSERT INTO rendelesek (username, email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot, fizetendo) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyzes','$kosar','$kod', '0', 'Rendelés leadva',$ar)";
                 };
                 if(mysqli_query($csatlakozas,$sql)){
                     echo"<script>alert('Sikeres megrendelés!');</script>";
