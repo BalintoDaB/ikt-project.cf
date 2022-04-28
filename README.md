@@ -5,6 +5,8 @@
 - Adatbázisbeli termékek [admin.php](http://ikt-project.rf.gd/webshop/admin.php)-ról történő átírása
 - Webshopon belüli kosár alkalmazása
 - Szállítási és fizetési adatok felvétele
+- Kuponok JSON fileban való tárolása és olvasása
+- Kuponok alkalmazása
 - Rendelés SQL adatbázisba kimentése
 - A rendelésről visszaigazoló email küldése a megadott email címre
 - Meglévő rendelés állapotának nyomonkövetése
