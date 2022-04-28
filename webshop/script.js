@@ -24,8 +24,8 @@ function kosarbatetel(nev, ar) {
       artd = $("#" + micsoda + "artd");
       var eredetiar = parseInt(ar);
       var ujar = eredetiar * eredeti;
-      var asd = eredeti-1;
-      elozoAr -= eredetiar * asd;
+      // var asd = eredeti-1;
+      // elozoAr -= eredetiar * asd;
       vegosszegValt(ujar);
       artd.html(ujar.toString() + " Ft");
       eredeti += 1;
@@ -39,7 +39,6 @@ function kosarbatetel(nev, ar) {
     }
   } else {
     var beilleszt = "'#" + cutoltNev + "'";
-    vegosszegValt(ar);
     $("#kosartable tbody").append(
       '<tr class="align-middle" id="' +
         cutoltNev +
@@ -55,16 +54,17 @@ function kosarbatetel(nev, ar) {
         "'" +
         ')" max="25" min="1" value="1"></td><td id="' +
         cutoltNev +
-        'artd">' +
+        'artd" class="artd">' +
         ar +
-        ' Ft</td><td><input type="button" class="btn-danger btn" value="Törlés" onclick="torles(' +
+        ' Ft</td><td><input type="button" class="btn-danger btn" value="Törlés" onclick="vegosszegTorles(' + "'" + cutoltNev + "artd'" +');torles(' +
         beilleszt +
         ')"></td></tr>'
-    );
-    eddigiKosarban[szamlalo] = cutoltNev;
-    szamlalo += 1;
-  }
-  $("#kosarform").val(eddigiKosarban);
+        );
+        eddigiKosarban[szamlalo] = cutoltNev;
+        szamlalo += 1;
+      }
+      $("#kosarform").val(eddigiKosarban);
+      vegosszegValt(ar);
 }
 function torles(nev) {
   $(nev).remove();
@@ -81,9 +81,8 @@ function szamValt(micsoda, ar) {
     artd = $("#" + micsoda + "artd");
     var eredetiar = parseInt(ar);
     var ujar = eredetiar * eredeti;
-    var asd = eredeti-1;
-    elozoAr -= eredetiar * asd;
-    vegosszegValt(ujar);
+    // var asd = eredeti-1;
+    // elozoAr -= eredetiar * asd;
     artd.html(ujar.toString() + " Ft");
     eredeti += 1;
     var index = eddigiKosarban.findIndex((element) => {
@@ -95,6 +94,7 @@ function szamValt(micsoda, ar) {
     eddigiKosarban[index] = micsoda + " " + eredeti.slice(0, -1) + "db";
     $("#kosarform").val("");
     $("#kosarform").val(eddigiKosarban);
+    vegosszegValt(ujar);
   }
 }
 function ugorj(hova) {
@@ -194,10 +194,14 @@ $(document).ready(function () {
 function kuponCheck(){
   var input = document.getElementById('kuponin');
   var output = document.getElementById('kuponout');
+  var vegosszeg = document.getElementById('vegosszeg');
   for (let i of kuponjson) {
       if(input.value == i.kod){
           kuponkedvezmeny = i.kedvezmény;
           output.innerHTML = "A követkzeő a kedvezményed: " + i.kedvezmény + "%";
+          var kedvezmenyTizedestort = 1 - kuponkedvezmeny/100 ;
+          kedvezmenyUtaniAr = Math.floor(elozoAr * kedvezmenyTizedestort);
+          vegosszeg.innerHTML = kedvezmenyUtaniAr + "FT (Kedvezmény után)";
           break;
       }
       else{
@@ -205,9 +209,21 @@ function kuponCheck(){
       }
   }
 }
-function vegosszegValt(ar){
+function vegosszegValt(){
   var output = document.getElementById('vegosszeg');
-  elozoAr += ar;
-  output.innerHTML = elozoAr;
+  var input = document.getElementsByClassName('artd');
+  elozoAr = 0;
+  for(let i of input){
+    elozoAr += parseInt(i.innerHTML);
+  }
+  output.innerHTML = elozoAr + "FT";
+}
+function vegosszegTorles(micsoda){
+  var output = document.getElementById('vegosszeg');
+  var input = $('#' + micsoda);
+  var valtar = parseInt(input.html());
+  elozoAr -= valtar;
+  output.innerHTML = elozoAr + "FT";
 }
 var elozoAr=0;
+var kedvezmenyUtaniAr=0;
