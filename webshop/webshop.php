@@ -109,15 +109,18 @@
             </div>
             <div class="col-12 col-md-6 p-3">
                 <div class="row">
-                    <div class="col-12 col-md-12">
+                    <div class="col-12 col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" oninput="kuponCheck()" name="kuponin" id="kuponin" placeholder="asd">
+                            <input type="text" class="form-control" name="kuponin" id="kuponin" placeholder="asd">
                             <label for="kuponin">Kuponkód</label>
                         </div>
                     </div>
+                    <div class="col-12 col-md-6 text-center">
+                        <input type="button" class="btn webshopgomb" value="Érvényesítés" onclick="kuponCheck()">
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-12">
+                    <div class="col-12 col-md-12 text-center">
                         <h2 id="kuponout">
                             Nincs ilyen kuponkód!
                         </h2>
@@ -132,7 +135,7 @@
             </h1>
             <form method="post">
             <input required type="hidden" name="kosar" id="kosarform">
-            <input required type="hidden" name="kosarkedvezmeny" id="kosarkedvezmeny">
+            <input required type="hidden" name="ar" id="ar">
             <div class="row justify-content-center"> 
                     <?php
                         if(isset($_COOKIE['uname']) and $_COOKIE['uname'] != '' and isset($_COOKIE['pword']) and $_COOKIE['pword'] != ''){
@@ -152,7 +155,7 @@
             <div class="row">
                 <div class="col-12 col-md-12 text-center" id="rendeles">
                     <?php
-                    if(isset($_POST['rendelesleadas']) and isset($_POST['kosar'])){
+                    if(isset($_POST['rendelesleadas']) and isset($_POST['kosar']) and isset($_POST['ar'])){
                         require_once('osztalyok.php');
                         $kosar = $_POST['kosar'];
                         $rendel = new Fiok();

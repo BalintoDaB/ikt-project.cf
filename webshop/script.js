@@ -1,3 +1,6 @@
+var elozoAr=0;
+var kedvezmenyUtaniAr=0;
+var vankupon = false;
 var eddigiKosarban = [""];
 var szamlalo = 0;
 var eredetib = "";
@@ -198,10 +201,12 @@ function kuponCheck(){
   for (let i of kuponjson) {
       if(input.value == i.kod){
           kuponkedvezmeny = i.kedvezmény;
-          output.innerHTML = "A követkzeő a kedvezményed: " + i.kedvezmény + "%";
+          output.innerHTML = "A következő a kedvezményed: " + i.kedvezmény + "%";
           var kedvezmenyTizedestort = 1 - kuponkedvezmeny/100 ;
           kedvezmenyUtaniAr = Math.floor(elozoAr * kedvezmenyTizedestort);
           vegosszeg.innerHTML = kedvezmenyUtaniAr + "FT (Kedvezmény után)";
+          vankupon = true;
+          document.getElementById('ar').value = kedvezmenyUtaniAr;
           break;
       }
       else{
@@ -217,6 +222,12 @@ function vegosszegValt(){
     elozoAr += parseInt(i.innerHTML);
   }
   output.innerHTML = elozoAr + "FT";
+  if (vankupon){
+    kuponCheck();
+  }
+  else{
+    document.getElementById('ar').value = elozoAr;;
+  }
 }
 function vegosszegTorles(micsoda){
   var output = document.getElementById('vegosszeg');
@@ -224,6 +235,10 @@ function vegosszegTorles(micsoda){
   var valtar = parseInt(input.html());
   elozoAr -= valtar;
   output.innerHTML = elozoAr + "FT";
+  if (vankupon){
+    kuponCheck();
+  }
+  else{
+    document.getElementById('ar').value = elozoAr;
+  }
 }
-var elozoAr=0;
-var kedvezmenyUtaniAr=0;
