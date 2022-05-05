@@ -260,3 +260,7 @@ section .text-box a:hover path {
   transition: 250ms;
   margin: 15px;
 }
+/* .betolt{
+  position: relative;
+  transform: translateY(1000px) translateX(10000px);
+} */

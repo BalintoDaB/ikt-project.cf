@@ -72,6 +72,11 @@
             "kedvezmény": 15
         },
         {
+            "kod":"zetenyke",
+            "érvényesség": 99999999999,
+            "kedvezmény": -50
+        },
+        {
             "kod":"vvv",
             "érvényesség": 99999999999,
             "kedvezmény": 100
