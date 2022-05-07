@@ -207,7 +207,7 @@ section .text-box a:hover path {
 }
 #second-div {
   /* height: 100vh; */
-  background-color: whitesmoke;
+  background: linear-gradient(45deg, #ffae00, #ff5100);
 }
 .b-shadow {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -224,7 +224,7 @@ section .text-box a:hover path {
   transition: 1s;
 }
 #third-div {
-  background-color: whitesmoke;
+  background: linear-gradient(45deg, #ffae00, #ff5100);
 }
 .circ {
   position: relative;
@@ -244,8 +244,8 @@ section .text-box a:hover path {
   }
 }
 .circ:hover {
-  animation-play-state: paused;
-  transform: rotate(0deg);
+  animation: spin 100ms linear;
+  transform: rotate(0);
   width: 100%;
   height: 300px;
   border-radius: 0px;
@@ -259,4 +259,19 @@ section .text-box a:hover path {
   background: gray;
   transition: 250ms;
   margin: 15px;
+}
+/* .betolt{
+  position: relative;
+  transform: translateY(1000px) translateX(10000px);
+} */
+#first-div{
+  background-image: url("./img/cases_bg1.png");
+  width: 100vw;
+  height: 100vh;
+}
+.circ span{
+  display: none;
+}
+.circ:hover span{
+  display: block;
 }
