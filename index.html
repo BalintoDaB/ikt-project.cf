@@ -21,16 +21,15 @@
     <header>
         <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <object height="50px" data="../logo1.svg" type="image/svg+xml"></object>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+            <object height="50px" data="logo1.svg" type="image/svg+xml"></object>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
-                        <li class="nav-item"><a class="nav-link" href="webshop/webshop.php">Webshop</a></li>
-                        <li class="nav-item"><a class="nav-link" href="webshop/allapot.php">Rendelés állapota</a></li>
+                        <li class="nav-item"><a href="webshop/webshop.php" class="nav-link">Webshop</a></li>
+                        <li class="nav-item"><a href="rolunk.html" class="nav-link">Rólunk</a></li>
+                        <li class="nav-item"><a href="webshop/allapot.php" class="nav-link">Rendelés állapotának megtekintése</a></li>
                     </ul>
                 </div>
             </div>
@@ -39,7 +38,7 @@
     <div class="container text-center" id="main-div">
         <h1 class="text-center text-light mt-5 fw-bold text-uppercase betolt">A legújabb ház a casesen!</h1>
         <h2 class="text-center text-light fw-bold betolt">Bemutatjuk a <span class="grad-purp">Nightskyt</span></h2>
-        <button class="btn btn-outline-danger my-3 betolt">Vedd meg!</button><br>
+        <button class="btn btn-outline-danger my-3 betolt" onclick="ugorj('http://ikt-project.rf.gd/webshop/webshop.php?eredetitermek=Nightsky&eredetiar=35000')">Vedd meg!</button><br>
         <img src="img/4.png" alt="Nightsky" class="img-fluid betolt">
     </div><br><br><br><br><br>
     <div class="row p-5" id="second-div">

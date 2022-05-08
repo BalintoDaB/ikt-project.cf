@@ -19,7 +19,7 @@
             </button>
             <div class="collapse navbar-collapse" id="main_nav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Főoldal</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Rólunk</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Referenciáink</a></li>
                     <li class="nav-item"><a class="nav-link" href="webshop.php">Webshop</a></li>

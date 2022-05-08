@@ -21,7 +21,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Főoldal</a></li>
                         <li class="nav-item"><a class="nav-link" href="../rolunk.html">Rólunk</a></li>
                         <li class="nav-item"><?php
                             if(isset($_COOKIE['uname']) && $_COOKIE['uname'] != '' && isset($_COOKIE['pword']) && $_COOKIE['pword'] != ''){
@@ -86,17 +86,6 @@
             </thead>
             <tbody>
             </tbody>
-            <!-- <tfoot>
-                <tr class="mt-4">
-                    <td id="vegosszeg" colspan="2">Még nincs semmi a kosaradban!</td>
-                    <td>
-                        <input type="text" name="kuponbe" placeholder="Kuponkód beírás(Ha van)" id="kuponbe">
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-            </tfoot> -->
         </table>
         <div class="row">
             <div class="col-12 col-md-6 p-3">
