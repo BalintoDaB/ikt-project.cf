@@ -1,3 +1,5 @@
+var kuponjson = [];
+var kuponkedvezmeny;
 var elozoAr=0;
 var kedvezmenyUtaniAr=0;
 var vankupon = false;
@@ -156,27 +158,9 @@ function kijelentkezes() {
   alert("Sikeres kijelentkezés!");
 }
 function loginToReset(){
-    $('#loginbox').css('display','none');
-    $('#resetbox').removeClass('d-none');
+  $('#loginbox').css('display','none');
+  $('#resetbox').removeClass('d-none');
 }
-function irszamKeres(irszam){
-  $.ajax({
-    type: "GET",
-    url: "irszamok.json",
-    data: "",
-    dataType: "JSON",
-    success: function(data) {
-      var tomb = data.Települések;
-      tomb.forEach(element => {
-        if(element.IRSZ == irszam){
-          $('body').html(element.Település);
-        }
-      });
-    }
-  });
-}
-var kuponkedvezmeny;
-var kuponjson = [];
 $(document).ready(function () {            
     $.ajax({
         type: "GET",
