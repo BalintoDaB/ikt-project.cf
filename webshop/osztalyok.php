@@ -93,10 +93,13 @@
                 $sor = $mennyi->fetch_assoc();
                 $regipword = $sor['Pass'];
                 if($milyen){
-                    if($regipword = $hasheltRegi){
+                    if($regipword == $hasheltRegi){
                         $sql = "UPDATE loginform SET Pass = '$hasheltJelszo', helyreallitasi = '' WHERE Username = '$mibe'";
                         if(mysqli_query($csatlakozas, $sql)){
                             echo"<script>alert('Sikeres jelszóváltoztatás!');document.cookie='pword=$hasheltJelszo';document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
+                        }
+                        else{
+                            echo"<script>alert('Hibás a régi jelszó!')</script>";
                         }
                     }
                 }

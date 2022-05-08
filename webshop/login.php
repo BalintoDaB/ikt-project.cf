@@ -134,10 +134,10 @@
                                     </div>
                                 </div>
                                 <div class="row justify-content-center mt-3">
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-6 mt-1">
                                         <input type="submit" name="regel" class="btn webshopgomb" value="Regisztráció">
                                     </div>
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-6 mt-1">
                                         <input type="button" class="btn webshopgomb" value="Vissza" onclick="ugorj('login.php')">
                                     </div>
                                     <?php
