@@ -38,7 +38,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="../index.php">Főoldal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Főoldal</a></li>
                         <li class="nav-item"><a class="nav-link" href="../rolunk.html">Rólunk</a></li>
                         <li class="nav-item"><a class="nav-link" href="allapot.php">Rendelés állapota</a></li>
                         <li class="nav-item"><a class="nav-link" href="webshop.php">Webshop</a></li>
@@ -134,10 +134,10 @@
                                     </div>
                                 </div>
                                 <div class="row justify-content-center mt-3">
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-6 mt-1">
                                         <input type="submit" name="regel" class="btn webshopgomb" value="Regisztráció">
                                     </div>
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-6 mt-1">
                                         <input type="button" class="btn webshopgomb" value="Vissza" onclick="ugorj('login.php')">
                                     </div>
                                     <?php

@@ -184,9 +184,9 @@ $(document).ready(function () {
         data: "",
         dataType: "JSON",
         success: function(data) {
-            kuponjson = data.kuponok;
+            kuponjson = data;
             for(let i of kuponjson){
-                if(i.érvényesség < Date.now() / 1000){
+                if(i.ervenyesseg < Date.now() / 1000){
                     var removeIndex = kuponjson.indexOf(i);
                     kuponjson.splice(removeIndex, 1);
                 }
@@ -200,8 +200,8 @@ function kuponCheck(){
   var vegosszeg = document.getElementById('vegosszeg');
   for (let i of kuponjson) {
       if(input.value == i.kod){
-          kuponkedvezmeny = i.kedvezmény;
-          output.innerHTML = "A következő a kedvezményed: " + i.kedvezmény + "%";
+          kuponkedvezmeny = i.kedvezmeny;
+          output.innerHTML = "A következő a kedvezményed: " + i.kedvezmeny + "%";
           var kedvezmenyTizedestort = 1 - kuponkedvezmeny/100 ;
           kedvezmenyUtaniAr = Math.floor(elozoAr * kedvezmenyTizedestort);
           vegosszeg.innerHTML = kedvezmenyUtaniAr + "FT (Kedvezmény után)";

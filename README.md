@@ -22,7 +22,7 @@
 - És természetesen teljesen mobilra van optimalizálva
 ## Részei (aloldalai):
 ###### Vásárlók számára elérhetők:
-- [index.php](http://ikt-project.rf.gd/index.php)
+- [index.html](http://ikt-project.rf.gd/index.html)
 - [webshop.php](http://ikt-project.rf.gd/webshop/webshop.php)
 - [allapot.php](http://ikt-project.rf.gd/webshop/allapot.php)
 - [rolunk.php](http://ikt-project.rf.gd/rolunk.php)

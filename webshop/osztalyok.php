@@ -93,10 +93,13 @@
                 $sor = $mennyi->fetch_assoc();
                 $regipword = $sor['Pass'];
                 if($milyen){
-                    if($regipword = $hasheltRegi){
+                    if($regipword == $hasheltRegi){
                         $sql = "UPDATE loginform SET Pass = '$hasheltJelszo', helyreallitasi = '' WHERE Username = '$mibe'";
                         if(mysqli_query($csatlakozas, $sql)){
                             echo"<script>alert('Sikeres jelszóváltoztatás!');document.cookie='pword=$hasheltJelszo';document.location.href='http://ikt-project.rf.gd/webshop/webshop.php'</script>";
+                        }
+                        else{
+                            echo"<script>alert('Hibás a régi jelszó!')</script>";
                         }
                     }
                 }
@@ -231,6 +234,7 @@
                 $kerEmailt = $sor['kerEmailt'];
                 $kod = rand(0, 9999999);
                 $ar = $_POST['ar'];
+                $rendeles = $_POST['kosar'];
                 if($kerEmailt == 1){
                     $sql = "INSERT INTO rendelesek (username, email, nev, telszam, orszag, megye, varos, cim, megjegyzes, rendeltek, kod, kerEmailt, allapot, fizetendo) VALUES ('$uname','$email','$nev','$telszam','$orszag','$megye','$irszam','$cim','$megjegyzes','$kosar','$kod', '1', 'Rendelés leadva',$ar)";
                 }
