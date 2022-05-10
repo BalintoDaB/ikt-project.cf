@@ -116,6 +116,33 @@
         include('ratingadd.php')
     ?>
     <hr>
+    <form method="post" enctype="multipart/form-data">
+        <table>
+            <caption>
+                Upload Image
+            </caption>
+            <tr>
+                <th>
+                    Put File Here
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                </td>
+                <td>
+                    <input type="text" name="name" id="name">
+                </td>
+                <td>
+                    <input type="submit" value="Upload Image" name="submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <?php
+        include('fileupload.php')
+    ?>
+    <hr>
     <form method="post">
         <table>
             <tr>
